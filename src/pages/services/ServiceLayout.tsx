@@ -45,7 +45,7 @@ const ServiceLayout = ({
     window.scrollTo(0, 0);
     setVisible(true);
   }, []);
-
+     
   return (
     <div className="min-h-screen pt-20 bg-background">
       {/* HERO */}
