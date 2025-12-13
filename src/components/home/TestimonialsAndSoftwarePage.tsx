@@ -241,7 +241,7 @@ const [selectedSoftware, setSelectedSoftware] = useState<Software | null>(null);
       {/* Action Button */}
       <Link
         to="/software-stack"
-        className="block w-full text-center bg-accent hover:bg-accent/90 text-white font-semibold py-3 rounded-xl transition"
+        className="w-full bg-primary text-white py-3 rounded-xl font-semibold hover:bg-accent transition"
       >
         View Software Stack
       </Link>
