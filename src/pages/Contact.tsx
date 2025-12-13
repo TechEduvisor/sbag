@@ -12,8 +12,7 @@ import {
   Globe,
   Shield,
 } from "lucide-react";
-import HeroSection from "@/components/HeroSection";
-
+import HeroSection from "../components/HeroSection";
 const EnhancedContact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredInfo, setHoveredInfo] = useState<number | null>(null);
