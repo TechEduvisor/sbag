@@ -1,22 +1,18 @@
 // File: src/pages/AccountingSoftwareDetailsPage.jsx
 import {
-  Cloud,
-  BarChart3,
-  FileSpreadsheet,
-  Globe2,
-  Layers,
-  LineChart,
-  ShieldCheck,
   Globe,
   Award,
   TrendingUpIcon,
 } from "lucide-react";
 import HeroSection from "../components/HeroSection";
+
 export default function AccountingSoftwareDetailsPage() {
   const softwares = [
     {
       name: "QuickBooks Online",
-      icon: Cloud,
+      logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg",
+      fallbackIcon: "QB",
+      color: "from-green-700 to-emerald-700",
       tag: "SMBs • CPAs • Global",
       description:
         "Cloud-based accounting for small and mid-sized businesses. Ideal for day-to-day bookkeeping, invoicing, and reconciliation.",
@@ -28,7 +24,9 @@ export default function AccountingSoftwareDetailsPage() {
     },
     {
       name: "Xero",
-      icon: Globe2,
+      logo: "https://cdn.worldvectorlogo.com/logos/xero-1.svg",
+      fallbackIcon: "X",
+      color: "from-blue-500 to-blue-600",
       tag: "Startups • Remote Teams",
       description:
         "Modern, cloud-native platform with great UX. Perfect for distributed teams and multi-currency businesses.",
@@ -40,7 +38,9 @@ export default function AccountingSoftwareDetailsPage() {
     },
     {
       name: "NetSuite",
-      icon: Layers,
+      logo: "https://cdn.worldvectorlogo.com/logos/netsuite-1.svg",
+      fallbackIcon: "NS",
+      color: "from-red-600 to-red-700",
       tag: "Mid–Enterprise • Multi-Entity",
       description:
         "Full-fledged ERP with advanced financials, suitable for growing companies needing deep controls and consolidation.",
@@ -52,7 +52,9 @@ export default function AccountingSoftwareDetailsPage() {
     },
     {
       name: "FreshBooks",
-      icon: FileSpreadsheet,
+      logo: "https://cdn.worldvectorlogo.com/logos/freshbooks-1.svg",
+      fallbackIcon: "FB",
+      color: "from-blue-600 to-indigo-600",
       tag: "Freelancers • Agencies",
       description:
         "Client-centric accounting with simple time tracking, invoicing, and expense management.",
@@ -64,7 +66,9 @@ export default function AccountingSoftwareDetailsPage() {
     },
     {
       name: "Wave Accounting",
-      icon: BarChart3,
+      logo: "https://cdn.worldvectorlogo.com/logos/wave-1.svg",
+      fallbackIcon: "W",
+      color: "from-cyan-500 to-blue-500",
       tag: "Bootstrapped • Micro Businesses",
       description:
         "Cost-effective solution for small businesses needing basic accounting, invoicing, and receipt capture.",
@@ -76,7 +80,9 @@ export default function AccountingSoftwareDetailsPage() {
     },
     {
       name: "Zoho Books",
-      icon: LineChart,
+      logo: "https://cdn.worldvectorlogo.com/logos/zoho-1.svg",
+      fallbackIcon: "ZB",
+      color: "from-yellow-600 to-orange-600",
       tag: "SMBs • Zoho Ecosystem",
       description:
         "Part of the Zoho suite. Ideal when you want CRM, billing, and accounting tightly integrated in one stack.",
@@ -88,7 +94,9 @@ export default function AccountingSoftwareDetailsPage() {
     },
     {
       name: "Sage Intacct",
-      icon: ShieldCheck,
+      logo: "https://cdn.worldvectorlogo.com/logos/sage-2.svg",
+      fallbackIcon: "SI",
+      color: "from-green-700 to-emerald-700",
       tag: "US GAAP • Audit-Heavy",
       description:
         "AICPA-preferred system designed for strong internal controls, auditability, and complex reporting.",
@@ -100,13 +108,29 @@ export default function AccountingSoftwareDetailsPage() {
     },
   ];
 
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement>,
+    fallbackIcon: string,
+    color: string
+  ) => {
+    const target = e.currentTarget;
+    const parent = target.parentElement;
+    if (parent) {
+      parent.innerHTML = `
+        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br ${color} rounded-2xl">
+          <span class="text-white font-bold text-lg">${fallbackIcon}</span>
+        </div>
+      `;
+    }
+  };
+
   return (
-    <div className="min-h-screen  bg-background py-20">
+    <div className="min-h-screen bg-background py-20">
       <HeroSection
         badgeText="Accounting Software"
         title={
           <>
-            Our {" "}
+            Our{" "}
             <span className="relative inline-block">
               <span className="text-accent relative z-10">
                 Accounting Software
@@ -121,22 +145,26 @@ export default function AccountingSoftwareDetailsPage() {
           { icon: Award, text: "Industry Trust", detail: "Top Rated Firm" },
           { icon: TrendingUpIcon, text: "Proven Growth", detail: "40% YoY" },
         ]}
-      />{" "}
-      <div className="container mt-20 ">
-       
-
+      />
+      
+      <div className="container mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {softwares.map((s) => {
-            const Icon = s.icon;
             return (
               <div
                 key={s.name}
                 className="relative bg-card border border-border rounded-2xl p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
-                {/* Icon + title */}
+                {/* Logo + title */}
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-7 h-7 text-primary" />
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-border flex items-center justify-center flex-shrink-0 p-2 overflow-hidden">
+                    <img
+                      src={s.logo}
+                      alt={`${s.name} logo`}
+                      className="w-full h-full object-contain"
+                      onError={(e) => handleImageError(e, s.fallbackIcon, s.color)}
+                      crossOrigin="anonymous"
+                    />
                   </div>
                   <div>
                     <h2 className="text-xl font-semibold text-foreground">
