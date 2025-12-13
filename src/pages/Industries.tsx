@@ -15,8 +15,7 @@ import {
   TrendingUp,
   ArrowRight,
 } from 'lucide-react';
-import HeroSection from '@/components/HeroSection';
-
+import HeroSection from '../components/HeroSection';
 const Industries = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

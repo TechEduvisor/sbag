@@ -1,9 +1,23 @@
-// File: src/pages/TestimonialsAndSoftwarePage.jsx
+// File: src/pages/TestimonialsAndSoftwarePage.tsx
 import { Quote, Sparkles, Star } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+interface Testimonial {
+  name: string;
+  company: string;
+  quote: string;
+}
+
+interface Software {
+  name: string;
+  logo: string;
+  fallbackIcon: string;
+  color: string;
+}
+
 export default function TestimonialsAndSoftwarePage() {
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       name: 'John Miller',
       company: 'CPA Firm, Texas',
@@ -26,37 +40,70 @@ export default function TestimonialsAndSoftwarePage() {
   const softwares = [
     {
       name: 'QuickBooks Online',
+       fallbackIcon: 'S',
+       color: 'from-green-700 to-emerald-700',
       logo: 'https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg',
     },
     {
       name: 'Xero',
+      fallbackIcon: 'X',
+      color: 'from-blue-500 to-blue-600',
       logo: 'https://cdn.worldvectorlogo.com/logos/xero-1.svg',
     },
     {
-    name: 'NetSuite',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/2/29/NetSuite_Logo.svg',
-  },
-  {
-    name: 'FreshBooks',
-    logo: 'https://cdn.worldvectorlogo.com/logos/freshbooks.svg',
-  },
-  {
-    name: 'Wave Accounting',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Wave_logo.svg',
-  },
-  {
-    name: 'Zoho Books',
-    logo: 'https://cdn.worldvectorlogo.com/logos/zoho-books.svg',
-  },   
-  {
-    name: 'Sage Intacct',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Sage_logo.svg',
-  },
+      name: 'NetSuite',
+      logo: 'https://www.netsuite.com/portal/assets/img/business-suite/erp/seo/oracle-netsuite-logo-primary.svg',
+      fallbackIcon: 'NS',
+      color: 'from-red-600 to-red-700',
+    },
     {
-    name: 'Microsoft Dynamics',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
-  },
+      name: 'FreshBooks',
+      logo: 'https://www.freshbooks.com/wp-content/themes/freshbooks/dist/images/logos/freshbooks-logo.svg',
+      fallbackIcon: 'FB',
+      color: 'from-blue-600 to-indigo-600',
+    },
+    {
+      name: 'Wave Accounting',
+      logo: 'https://www.waveapps.com/img/logos/wave-logo.svg',
+      fallbackIcon: 'W',
+      color: 'from-cyan-500 to-blue-500',
+    },
+    {
+      name: 'Zoho Books',
+      logo: 'https://www.zoho.com/books/images/zoho-books-logo.svg',
+      fallbackIcon: 'ZB',
+      color: 'from-yellow-600 to-orange-600',
+    },
+    {
+      name: 'Sage Intacct',
+      logo: 'https://cdn.worldvectorlogo.com/logos/sage-2.svg',
+      fallbackIcon: 'S',
+      color: 'from-green-700 to-emerald-700',
+    },
+    {
+      name: 'Microsoft Dynamics',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+      fallbackIcon: 'D365',
+      color: 'from-blue-700 to-indigo-700',
+    },
   ];
+const [selectedSoftware, setSelectedSoftware] = useState<Software | null>(null);
+
+  const handleImageError = (
+    e: React.SyntheticEvent<HTMLImageElement>,
+    fallbackIcon: string,
+    color: string
+  ) => {
+    const target = e.currentTarget;
+    const parent = target.parentElement;
+    if (parent) {
+      parent.innerHTML = `
+        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br ${color} rounded-2xl">
+          <span class="text-white font-bold text-lg">${fallbackIcon}</span>
+        </div>
+      `;
+    }
+  };
 
   return (
     <div className="min-h-screen mt-20 bg-secondary text-white py-24 relative overflow-hidden">
@@ -122,7 +169,6 @@ export default function TestimonialsAndSoftwarePage() {
           ))}
         </div>
 
-
         {/* Software Section */}
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -136,28 +182,24 @@ export default function TestimonialsAndSoftwarePage() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {softwares.map((s, i) => (
-            <Link
-              key={i}
-              to="/software-stack"
-              className="relative bg-white/8 p-6 md:p-8 rounded-xl border border-white/15 backdrop-blur-md flex flex-col items-center text-center hover:bg-white/14 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 cursor-pointer group"
-            >
-              <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center mb-4 shadow-lg shadow-black/30 p-3 group-hover:scale-105 transition-transform">
-                <img 
-                  src={s.logo} 
+<button
+  key={i}
+  onClick={() => setSelectedSoftware(s)}
+  className="relative bg-white/8 p-6 md:p-8 rounded-xl border border-white/15 backdrop-blur-md flex flex-col items-center text-center hover:bg-white/14 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 cursor-pointer group"
+>
+
+              <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center mb-4 shadow-lg shadow-black/30 p-3 group-hover:scale-105 transition-transform overflow-hidden">
+                <img
+                  src={s.logo}
                   alt={`${s.name} logo`}
                   className="w-full h-full object-contain"
-                  onError={(e) => {
-                    // Fallback if image fails to load
-                    // e.target..display = 'none';
-                    // e.target.parentElement.innerHTML = `<div class="text-2xl font-bold text-secondary">${s.name.charAt(0)}</div>`;
-                  }}
+                  onError={(e) => handleImageError(e, s.fallbackIcon, s.color)}
+                  crossOrigin="anonymous"
                 />
               </div>
               <p className="text-lg font-semibold mb-1">{s.name}</p>
-              <p className="text-xs text-white/60">
-                Cloud-ready • Scalable • Secure
-              </p>
-            </Link>
+              <p className="text-xs text-white/60">Cloud-ready • Scalable • Secure</p>
+            </button>
           ))}
         </div>
 
@@ -166,6 +208,47 @@ export default function TestimonialsAndSoftwarePage() {
           We also support custom ERP integrations and industry-specific finance tools on request.
         </div>
       </div>
+      {selectedSoftware && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div className="bg-secondary text-white rounded-2xl w-[90%] max-w-md p-8 relative shadow-2xl border border-white/15">
+
+      {/* Close Button */}
+      <button
+        onClick={() => setSelectedSoftware(null)}
+        className="absolute top-4 right-4 text-white/70 hover:text-white text-xl"
+      >
+        ×
+      </button>
+
+      {/* Logo */}
+      <div className="w-24 h-24 mx-auto mb-6 rounded-2xl bg-white flex items-center justify-center p-4 shadow-lg">
+        <img
+          src={selectedSoftware.logo}
+          alt={selectedSoftware.name}
+          className="w-full h-full object-contain"
+        />
+      </div>
+
+      {/* Title */}
+      <h3 className="text-2xl font-bold text-center mb-3">
+        {selectedSoftware.name}
+      </h3>
+
+      <p className="text-white/70 text-center mb-6">
+        Trusted cloud accounting platform we actively work with.
+      </p>
+
+      {/* Action Button */}
+      <Link
+        to="/software-stack"
+        className="block w-full text-center bg-accent hover:bg-accent/90 text-white font-semibold py-3 rounded-xl transition"
+      >
+        View Software Stack
+      </Link>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

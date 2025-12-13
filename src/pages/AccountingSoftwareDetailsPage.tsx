@@ -7,8 +7,11 @@ import {
   Layers,
   LineChart,
   ShieldCheck,
+  Globe,
+  Award,
+  TrendingUpIcon,
 } from "lucide-react";
-
+import HeroSection from "../components/HeroSection";
 export default function AccountingSoftwareDetailsPage() {
   const softwares = [
     {
@@ -98,25 +101,30 @@ export default function AccountingSoftwareDetailsPage() {
   ];
 
   return (
-    <div className="min-h-screen mt-20 bg-background py-20">
-      <div className="container mx-auto px-4">
-        {/* Hero */}
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            Our Accounting Tech Stack
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Accounting Software <span className="text-primary">We Work On</span>
-          </h1>
-          <p className="text-gray-500 max-w-2xl mx-auto text-lg">
-            We don’t push tools on you. We work on the platforms your business
-            already uses—or help you pick the right one based on scale,
-            compliance, and reporting needs.
-          </p>
-        </div>
+    <div className="min-h-screen  bg-background py-20">
+      <HeroSection
+        badgeText="Accounting Software"
+        title={
+          <>
+            Our Accounting Tech Stack{" "}
+            <span className="relative inline-block">
+              <span className="text-accent relative z-10">
+                Accounting Software
+              </span>
+              <span className="absolute inset-0 bg-accent/20 blur-2xl animate-pulse-glow" />
+            </span>
+          </>
+        }
+        subtitle="Deep accounting expertise across diverse industries worldwide."
+        achievements={[
+          { icon: Globe, text: "Global Presence", detail: "20+ Countries" },
+          { icon: Award, text: "Industry Trust", detail: "Top Rated Firm" },
+          { icon: TrendingUpIcon, text: "Proven Growth", detail: "40% YoY" },
+        ]}
+      />{" "}
+      <div className="container mt-20 ">
+       
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {softwares.map((s) => {
             const Icon = s.icon;
