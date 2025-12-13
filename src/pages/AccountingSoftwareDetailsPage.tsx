@@ -106,7 +106,7 @@ export default function AccountingSoftwareDetailsPage() {
         badgeText="Accounting Software"
         title={
           <>
-            Our Accounting Tech Stack{" "}
+            Our {" "}
             <span className="relative inline-block">
               <span className="text-accent relative z-10">
                 Accounting Software
