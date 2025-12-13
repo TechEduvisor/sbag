@@ -252,11 +252,11 @@ const Navbar = () => {
         className="w-full h-full object-cover"
       />
     </div>
-    <div className="absolute z-50 -bottom-9 left-1/2 -translate-x-1/2
+    {/* <div className="absolute z-50 -bottom-9 left-1/2 -translate-x-1/2
                     px-2 py-1 text-xs rounded-md bg-black text-white
                     opacity-0 group-hover:opacity-100 transition">
       Serving USA Clients
-    </div>
+    </div> */}
   </div>
 
   {/* UK */}
@@ -269,11 +269,11 @@ const Navbar = () => {
         className="w-full h-full object-cover"
       />
     </div>
-    <div className="absolute -bottom-9 left-1/2 -translate-x-1/2
+    {/* <div className="absolute -bottom-9 left-1/2 -translate-x-1/2
                     px-2 py-1 text-xs rounded-md bg-black text-white
                     opacity-0 group-hover:opacity-100 transition">
       Serving UK Clients
-    </div>
+    </div> */}
   </div>
 
   {/* INDIA */}
@@ -286,11 +286,11 @@ const Navbar = () => {
         className="w-full h-full object-cover"
       />
     </div>
-    <div className="absolute -bottom-9 left-1/2 -translate-x-1/2
+    {/* <div className="absolute -bottom-9 left-1/2 -translate-x-1/2
                     px-2 py-1 text-xs rounded-md bg-black text-white
                     opacity-0 group-hover:opacity-100 transition">
       India Operations
-    </div>
+    </div> */}
   </div>
 </div>
 
