@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Brand Colors - S B A G & Co. LLP */
+    --background: 50 40% 98%; /* Off-White Cream #FAF9F6 */
+    --foreground: 54 40% 14%; /* Dark Olive #343316 */
+
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 54 40% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 54 40% 14%;
+
+    /* Primary - Gold #D78A3B */
+    --primary: 32 66% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Forest Green #1E8449 */
+    --secondary: 151 64% 31%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted - Sage Green #698973 */
+    --muted: 142 15% 48%;
+    --muted-foreground: 0 0% 100%;
+
+    /* Accent - Regal Gold #D4AF37 */
+    --accent: 45 65% 53%;
+    --accent-foreground: 54 40% 14%;
+
+    /* Additional Brand Colors */
+    --dark-olive: 54 40% 14%; /* #343316 */
+    --sage-green: 142 15% 48%; /* #698973 */
+    --forest-green: 151 64% 31%; /* #1E8449 */
+    --charcoal-blue: 202 29% 15%; /* #1C2833 */
+    --cream: 50 40% 98%; /* #FAF9F6 */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 202 29% 15%; /* Charcoal Blue for borders */
+    --input: 202 29% 15%;
+    --ring: 32 66% 54%; /* Gold ring */
+
+    --radius: 0.75rem;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 54 40% 14%;
+    --foreground: 50 40% 98%;
+
+    --card: 202 29% 15%;
+    --card-foreground: 50 40% 98%;
+
+    --popover: 202 29% 15%;
+    --popover-foreground: 50 40% 98%;
+
+    --primary: 32 66% 54%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 151 64% 31%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 142 15% 48%;
+    --muted-foreground: 0 0% 100%;
+
+    --accent: 45 65% 53%;
+    --accent-foreground: 54 40% 14%;
+
+    --border: 142 15% 28%;
+    --input: 142 15% 28%;
+    --ring: 32 66% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  .gradient-green {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--sage-green)));
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
