@@ -307,10 +307,10 @@ const About = () => {
                     </p>
 
                     {/* Hover indicator */}
-                    <div className={`mt-6 flex items-center gap-2 text-primary font-medium transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+                    {/* <div className={`mt-6 flex items-center gap-2 text-primary font-medium transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
                       <span>Read More</span>
                       <ChevronRight className="w-4 h-4" />
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* Bottom decoration */}
