@@ -252,7 +252,7 @@ const Navbar = () => {
         className="w-full h-full object-cover"
       />
     </div>
-    <div className="absolute -bottom-9 left-1/2 -translate-x-1/2
+    <div className="absolute z-50 -bottom-9 left-1/2 -translate-x-1/2
                     px-2 py-1 text-xs rounded-md bg-black text-white
                     opacity-0 group-hover:opacity-100 transition">
       Serving USA Clients
@@ -260,7 +260,7 @@ const Navbar = () => {
   </div>
 
   {/* UK */}
-  <div className="relative group -ml-3 z-10">
+  <div className="relative group -ml-3 z-40">
     <div className="w-9 h-9 rounded-full bg-white border shadow-sm 
                     flex items-center justify-center overflow-hidden">
       <img
