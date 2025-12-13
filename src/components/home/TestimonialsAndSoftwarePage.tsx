@@ -47,7 +47,7 @@ export default function TestimonialsAndSoftwarePage() {
   {
     name: 'Zoho Books',
     logo: 'https://cdn.worldvectorlogo.com/logos/zoho-books.svg',
-  },
+  },   
   {
     name: 'Sage Intacct',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/5/59/Sage_logo.svg',
