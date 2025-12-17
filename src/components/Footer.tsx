@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, FacebookIcon } from 'lucide-react';
 
 const Footer = () => {
  
@@ -65,16 +65,23 @@ const Footer = () => {
             <p className="text-white/80 mb-6">
               Your trustedpartner for bookkeeping, accounting, and audit support services with experienced US GAAP professionals.
             </p>
-            {/* <div className="flex space-x-4">
+            <div className="flex space-x-4">
               <a
-                href="https://www.linkedin.com/company/sbagllp"
+                href="https://www.linkedin.com/company/s-b-a-g-co-llp/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
               >
                 <Linkedin size={20} />
+              </a> <a
+                href="https://www.facebook.com/sbagllp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+              >
+                <FacebookIcon size={20} />
               </a>
-            </div> */}
+            </div>
           </div>
 
           {/* Quick Links */}
