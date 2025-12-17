@@ -162,7 +162,7 @@ const EnhancedContact = () => {
         }
         subtitle="Let's discuss how we can help transform your accounting and bookkeeping operations."
         achievements={[
-          { icon: Globe, text: "Global Clients", detail: "20+ Countries" },
+          { icon: Globe, text: "Global Clients", detail: "5+ Countries" },
           { icon: Shield, text: "Trusted", detail: "100% Compliance" },
         ]}
       />

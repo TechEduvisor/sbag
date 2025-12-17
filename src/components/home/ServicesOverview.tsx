@@ -33,7 +33,7 @@ const ServicesOverview = () => {
     title: 'Payroll Services',
     description: 'Efficient payroll processing ensuring timely and compliant employee compensation management.',
     color: 'from-green-500 to-emerald-500',
-    stats: '50+ Employees',
+    stats: '12+ Employees',
     path: '/services/payroll',
   },
   {
@@ -79,7 +79,7 @@ const ServicesOverview = () => {
 ];
 
   const features = [
-    { icon: Sparkles, text: 'Expert Team', value: '50+' },
+    { icon: Sparkles, text: 'Expert Team', value: '12+' },
     { icon: TrendingUp, text: 'Success Rate', value: '' },
     { icon: Users, text: 'Happy Clients', value: '50+' },
   ];

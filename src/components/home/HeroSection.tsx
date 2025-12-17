@@ -6,12 +6,12 @@ const HeroSection = () => {
   const stats = [
     { icon: Users, value: '50+', label: 'Clients' },
     { icon: Award, value: '12+', label: 'Years Experience' },
-    { icon: TrendingUp, value: '95%', label: 'Success Rate' },
+    { icon: TrendingUp, value: '99%', label: 'Success Rate' },
     { icon: Shield, value: '100%', label: 'Confidential' }
   ];
  const navigate = useNavigate();
   return (
-    <section className="relative min-h-screen  py-20 sm:pt-2 flex items-center justify-center overflow-hidden bg-gradient-to-br from-secondary via-forest-green to-dark-olive">
+    <section className="relative min-h-screen  py-20  flex items-center justify-center overflow-hidden bg-gradient-to-br from-secondary via-forest-green to-dark-olive">
 
       {/* Background Grid (Static) */}
       <div className="absolute inset-0 opacity-20"
@@ -25,7 +25,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-dark-olive/80 via-transparent to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center text-white pt-20 md:my-20">
+      <div className="relative z-10 container mx-auto px-4 text-center text-white pt-20">
 
         {/* Badge */}
         <div className="inline-block mb-6 px-6 py-2 bg-primary/20 backdrop-blur-sm rounded-full border border-primary/30">

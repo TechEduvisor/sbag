@@ -27,7 +27,7 @@ const WhyChooseSection = () => {
       title: 'Experienced Team',
       description: 'Our team comprises seasoned professionals with extensive experience in US GAAP and international accounting standards.',
       gradient: 'from-blue-500 via-cyan-500 to-teal-500',
-      stat: '50+ Experts',
+      stat: '12+ Experts',
     },
     {
       icon: Zap,
@@ -62,7 +62,7 @@ const WhyChooseSection = () => {
   const stats = [
     { icon: Star, value: '4.9/5', label: 'Client Rating' },
     { icon: Award, value: '12+', label: 'Years Experience' },
-    { icon: Target, value: '95%', label: 'Success Rate' },
+    { icon: Target, value: '99%', label: 'Success Rate' },
   ];
 
   return (

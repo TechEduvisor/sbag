@@ -437,7 +437,7 @@ const Services = () => {
                           </div>
                           <div className="flex items-center justify-between bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                             <span className="text-white/80 text-sm">Pass Rate</span>
-                            <span className="text-accent font-bold text-lg">95%</span>
+                            <span className="text-accent font-bold text-lg">99%</span>
                           </div>
                           <div className="flex items-center justify-between bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                             <span className="text-white/80 text-sm">Time Saved</span>

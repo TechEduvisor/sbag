@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Target, Eye, Heart, Users, Award, TrendingUp, Globe, Shield, Sparkles, ChevronRight } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,6 +8,17 @@ const About = () => {
   const [hoveredStat, setHoveredStat] = useState(null);
   const [activeParticles, setActiveParticles] = useState([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+const [expandedFounder, setExpandedFounder] = useState<null | 'ankit' | 'sudhanshu'>(null);
+const ankitShort =
+  "Member of the Institute of Chartered Accountants of India with over 12 years of experience in Accounting and Taxation for Indian, UK, and US clients.";
+
+const ankitFull =
+  "Member of the Institute of Chartered Accountants of India with over 12 years of experience in Accounting and Taxation for Indian, UK, and US clients. Holds a Bachelor's degree in Commerce along with a Diploma in IFRS. Certified QuickBooks and Xero Advisor with deep expertise in multi-country compliance and financial reporting.";
+const sudhanshuShort =
+  "Qualified Chartered Accountant with strong experience in Auditing and Accounting.";
+
+const sudhanshuFull =
+  "Qualified Chartered Accountant with strong experience in Auditing and Accounting. With years of hands-on experience in Bookkeeping, Accounting, and Statutory Audits, he actively supports US-based entities in bookkeeping, payroll taxation, and accounting services.";
 
   useEffect(() => {
     setIsVisible(true);
@@ -60,12 +72,12 @@ const About = () => {
   const stats = [
     { value: '50+', label: 'Clients Worldwide', icon: Users, color: 'text-cyan-400' },
     { value: '12+', label: 'Years Experience', icon: Award, color: 'text-yellow-400' },
-    { value: '50+', label: 'Team Members', icon: TrendingUp, color: 'text-green-400' },
-    { value: '95%', label: 'Client Satisfaction', icon: Shield, color: 'text-purple-400' },
+    { value: '12+', label: 'Team Members', icon: TrendingUp, color: 'text-green-400' },
+    { value: '99%', label: 'Client Satisfaction', icon: Shield, color: 'text-purple-400' },
   ];
 
   const achievements = [
-    { icon: Globe, text: 'Global Presence', detail: '20+ Countries' },
+    { icon: Globe, text: 'Global Presence', detail: '5+ Countries' },
     { icon: Award, text: 'Industry Recognition', detail: 'Top Rated Firm' },
     { icon: Shield, text: '100% Compliant', detail: 'US GAAP Standards' },
     { icon: TrendingUp, text: 'Growing Fast', detail: '40% YoY Growth' },
@@ -177,7 +189,7 @@ const About = () => {
               
               <div className="space-y-6">
                 {[
-                  'S B A G & Co. LLP was founded with a clear mission: to provide world-class accounting and bookkeeping services to businesses of all sizes. With over 15 years of experience, we\'ve grown from a small team to a trusted partner serving 50+ clients worldwide.',
+                  'S B A G & Co. LLP was founded with a clear mission: to provide world-class accounting and bookkeeping services to businesses of all sizes. With over 12 years of experience, we\'ve grown from a small team to a trusted partner serving 50+ clients worldwide.',
                   'Our team of experienced professionals specializes in US GAAP accounting standards and international best practices. We combine traditional accounting expertise with modern technology to deliver efficient, accurate, and timely services.',
                   'What sets us apart is our commitment to understanding each client\'s unique needs. We don\'t just process numbers; we provide insights and strategic guidance that help businesses make informed decisions and achieve their financial goals.'
                 ].map((text, index) => (
@@ -326,20 +338,10 @@ const About = () => {
           </div>
         </div>
       </section>
-
-  {/* Leadership Team */}
-<section className="section-padding bg-background relative overflow-hidden">
-  <div className="absolute inset-0 opacity-[0.02]">
-    <div
-      className="w-full h-full"
-      style={{
-        backgroundImage: `radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)`,
-        backgroundSize: "40px 40px",
-      }}
-    />
-  </div>
-
-  <div className="container mx-auto px-4 relative z-10">
+{/* Leadership Team */}
+<section className="py-20 bg-background relative overflow-hidden">
+  <div className="max-w-6xl mx-auto px-4 relative z-10">
+    {/* Header */}
     <div className="text-center mb-16">
       <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
         <Users className="text-primary w-5 h-5" />
@@ -358,72 +360,133 @@ const About = () => {
       </p>
     </div>
 
-    {/* FOUNDERS */}
-    <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-      {/* Ankit Gupta */}
-      <div className="group text-center">
-        <div className="relative mb-6 inline-block">
-          <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl group-hover:scale-105 transition-all duration-300">
-            <img
-              src="/photo2.png"
-              alt="Ankit Gupta - Founding Partner"
-              className="w-full h-full object-cover"
-            />
-          </div>
+    {/* FOUNDERS LIST */}
+    <div className="space-y-20 max-w-5xl mx-auto">
+      {/* ================= ANKIT GUPTA ================= */}
+      <div className="flex flex-col md:flex-row gap-10 items-start">
+        {/* Image */}
+        <div className="flex-shrink-0">
+          <div className="relative">
+            <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+              <img
+                src="/photo2.png"
+                alt="Ankit Gupta - Founding Partner"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-          <div className="absolute bottom-3 right-3 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
-            <Award className="w-6 h-6 text-white" />
+            <div className="absolute bottom-3 right-3 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
+              <Award className="w-6 h-6 text-white" />
+            </div>
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-gray-900 mb-1">
-          Ankit Gupta
-        </h3>
-        <p className="text-primary font-semibold mb-4">
-          Founding Partner
-        </p>
+        {/* Content */}
+        <div className="flex-1 text-left">
+          <h3 className="text-3xl font-bold text-gray-900 mb-1">
+            Ankit Gupta
+          </h3>
 
-        <p className="text-gray-600 text-sm leading-relaxed max-w-sm mx-auto">
-          Member of the Institute of Chartered Accountants of India with over
-          10 years of experience in Accounting and Taxation for Indian, UK,
-          and US clients. Holds a Bachelor's degree in Commerce along with a
-          Diploma in IFRS. Certified QuickBooks and Xero Advisor.
-        </p>
+          <p className="text-primary font-semibold mb-4">
+            Founding Partner
+          </p>
+
+          <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
+            {expandedFounder === 'ankit' ? ankitFull : ankitShort}
+          </p>
+
+          {/* Actions */}
+          <div className="mt-4 flex items-center gap-4">
+            <button
+              onClick={() =>
+                setExpandedFounder(
+                  expandedFounder === 'ankit' ? null : 'ankit'
+                )
+              }
+              className="text-primary font-medium text-sm hover:underline"
+            >
+              {expandedFounder === 'ankit' ? 'View Less' : 'View More'}
+            </button>
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-primary transition"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin size={20} />
+            </a>
+          </div>
+        </div>
       </div>
 
-      {/* Sudhanshu Bansal */}
-      <div className="group text-center">
-        <div className="relative mb-6 inline-block">
-          <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl group-hover:scale-105 transition-all duration-300">
-            <img
-              src="/photo1.png"
-              alt="Sudhanshu Bansal - Co-Founder"
-              className="w-full h-full"
-            />
-          </div>
+      {/* ================= SUDHANSHU BANSAL ================= */}
+      <div className="flex flex-col md:flex-row gap-10 items-start">
+        {/* Image */}
+        <div className="flex-shrink-0">
+          <div className="relative">
+            <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+              <img
+                src="/photo1.png"
+                alt="Sudhanshu Bansal - Co-Founder"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-          <div className="absolute bottom-3 right-3 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
-            <Award className="w-6 h-6 text-white" />
+            <div className="absolute bottom-3 right-3 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
+              <Award className="w-6 h-6 text-white" />
+            </div>
           </div>
         </div>
 
-        <h3 className="text-2xl font-bold text-gray-900 mb-1">
-          Sudhanshu Bansal
-        </h3>
-        <p className="text-primary font-semibold mb-4">
-          Co-Founder
-        </p>
+        {/* Content */}
+        <div className="flex-1 text-left">
+          <h3 className="text-3xl font-bold text-gray-900 mb-1">
+            Sudhanshu Bansal
+          </h3>
 
-        <p className="text-gray-600 text-sm leading-relaxed max-w-sm mx-auto">
-          Qualified Chartered Accountant with strong experience in Auditing
-          and Accounting. With years of hands-on experience in Bookkeeping,
-          Accounting, and Statutory Audits, he actively supports US-based
-          entities in bookkeeping, payroll taxation, and accounting services.
-        </p>
+          <p className="text-primary font-semibold mb-4">
+            Co-Founder
+          </p>
+
+          <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
+            {expandedFounder === 'sudhanshu'
+              ? sudhanshuFull
+              : sudhanshuShort}
+          </p>
+
+          {/* Actions */}
+          <div className="mt-4 flex items-center gap-4">
+            <button
+              onClick={() =>
+                setExpandedFounder(
+                  expandedFounder === 'sudhanshu' ? null : 'sudhanshu'
+                )
+              }
+              className="text-primary font-medium text-sm hover:underline"
+            >
+              {expandedFounder === 'sudhanshu'
+                ? 'View Less'
+                : 'View More'}
+            </button>
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-primary transition"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin size={20} />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
       <style>{`

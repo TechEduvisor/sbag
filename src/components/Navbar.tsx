@@ -107,17 +107,14 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* LOGO */}
           <Link to="/" className="flex items-center space-x-3 group">
-           
-  <div className=" md:block p-2">
+            <div className=" md:block p-2">
               <img
                 src="/logo.png"
                 alt="Logo"
                 className="w-[120px] h-9 rounded-md"
               />
 
-              <p className="text-xs pt-1 ">
-                Accounting Excellence
-              </p>
+              <p className="text-xs pt-1 ">Accounting Excellence</p>
             </div>
           </Link>
 
@@ -240,59 +237,36 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-{/* COUNTRY FLAGS */}
-<div className="hidden lg:flex items-center mr-3">
-  {/* USA */}
-  <div className="relative group z-20">
-    <div className="w-9 h-9 rounded-full bg-white border shadow-sm 
-                    flex items-center justify-center overflow-hidden">
-      <img
-        src="https://flagcdn.com/w40/us.png"
-        alt="USA"
-        className="w-full h-full object-cover"
-      />
-    </div>
-    {/* <div className="absolute z-50 -bottom-9 left-1/2 -translate-x-1/2
-                    px-2 py-1 text-xs rounded-md bg-black text-white
-                    opacity-0 group-hover:opacity-100 transition">
-      Serving USA Clients
-    </div> */}
-  </div>
-
-  {/* UK */}
-  <div className="relative group -ml-3 z-40">
-    <div className="w-9 h-9 rounded-full bg-white border shadow-sm 
-                    flex items-center justify-center overflow-hidden">
-      <img
-        src="https://flagcdn.com/w40/gb.png"
-        alt="UK"
-        className="w-full h-full object-cover"
-      />
-    </div>
-    {/* <div className="absolute -bottom-9 left-1/2 -translate-x-1/2
-                    px-2 py-1 text-xs rounded-md bg-black text-white
-                    opacity-0 group-hover:opacity-100 transition">
-      Serving UK Clients
-    </div> */}
-  </div>
-
-  {/* INDIA */}
-  <div className="relative group -ml-3">
-    <div className="w-9 h-9 rounded-full bg-white border shadow-sm 
-                    flex items-center justify-center overflow-hidden">
-      <img
-        src="https://flagcdn.com/w40/in.png"
-        alt="India"
-        className="w-full h-full object-cover"
-      />
-    </div>
-    {/* <div className="absolute -bottom-9 left-1/2 -translate-x-1/2
-                    px-2 py-1 text-xs rounded-md bg-black text-white
-                    opacity-0 group-hover:opacity-100 transition">
-      India Operations
-    </div> */}
-  </div>
-</div>
+          {/* COUNTRY FLAGS */}
+          <div className="hidden lg:flex items-center ml-3">
+            {[
+              { code: "us", label: "USA" },
+              { code: "gb", label: "UK" },
+              // { code: "in", label: "India" },
+              { code: "ca", label: "Canada" },
+              { code: "au", label: "Australia" },
+            ].map((c, index) => (
+              <div
+                key={c.code}
+                className={`
+        h-6 w-9
+        border border-white/30
+        rounded-[2px]
+        overflow-hidden
+        bg-white
+        shadow-sm
+        ${index !== 0 ? "-ml-2" : ""}
+      `}
+                title={c.label}
+              >
+                <img
+                  src={`https://flagcdn.com/w40/${c.code}.png`}
+                  alt={c.label}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
 
           {/* CTA */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
@@ -325,36 +299,34 @@ const Navbar = () => {
             className="lg:hidden bg-card border-t border-border shadow-lg"
           >
             {/* MOBILE COUNTRY FLAGS */}
-{/* MOBILE COUNTRY FLAGS */}
-<div className="flex items-center px-4 pb-3">
-  <div className="w-9 h-9 rounded-full bg-white border shadow-sm 
-                  flex items-center justify-center overflow-hidden z-20">
-    <img
-      src="https://flagcdn.com/w40/us.png"
-      alt="USA"
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  <div className="w-9 h-9 rounded-full bg-white border shadow-sm 
-                  flex items-center justify-center overflow-hidden -ml-3 z-10">
-    <img
-      src="https://flagcdn.com/w40/gb.png"
-      alt="UK"
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  <div className="w-9 h-9 rounded-full bg-white border shadow-sm 
-                  flex items-center justify-center overflow-hidden -ml-3">
-    <img
-      src="https://flagcdn.com/w40/in.png"
-      alt="India"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-
+            <div className="flex items-center px-4 pb-3">
+              {[
+                { code: "us", label: "USA" },
+                { code: "gb", label: "UK" },
+                { code: "in", label: "India" },
+                { code: "ca", label: "Canada" },
+                { code: "au", label: "Australia" },
+              ].map((c, index) => (
+                <div
+                  key={c.code}
+                  className={`
+        h-6 w-9
+        border border-border
+        rounded-[2px]
+        overflow-hidden
+        bg-white
+        shadow-sm
+        ${index !== 0 ? "-ml-2" : ""}
+      `}
+                >
+                  <img
+                    src={`https://flagcdn.com/w40/${c.code}.png`}
+                    alt={c.label}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
 
             <div className="container mx-auto px-4 py-4 space-y-2">
               {navLinks.slice(0, 2).map((link) => (
