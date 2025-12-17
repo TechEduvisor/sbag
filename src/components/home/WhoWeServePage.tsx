@@ -92,7 +92,7 @@ export default function WhoWeServePage() {
   ];
 
   return (
-    <div className="min-h-screen pt-20 bg-gradient-to-b from-dark-olive to-secondary text-white py-24 relative overflow-hidden">
+    <div className="min-h-screen pt-20 bg-gradient-to-br from-secondary via-forest-green to-dark-olive text-white py-24 relative overflow-hidden">
       {/* Background accents */}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-24 -left-24 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />
@@ -170,7 +170,7 @@ export default function WhoWeServePage() {
                 </h2>
               </div>
 
-              <p className="text-muted-foreground mb-6">
+              <p className="text-gray-800 mb-6">
                 {activeIndustry.description}
               </p>
 

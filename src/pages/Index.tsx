@@ -1,9 +1,9 @@
-import HeroSection from '@/components/home/HeroSection';
-import StatsSection from '@/components/home/StatsSection';
-import WhyChooseSection from '@/components/home/WhyChooseSection';
-import ServicesOverview from '@/components/home/ServicesOverview';
-import WhoWeServePage from '@/components/home/WhoWeServePage';
-import TestimonialsAndSoftwarePage from '@/components/home/TestimonialsAndSoftwarePage';
+import HeroSection from "../components/home/HeroSection";
+import StatsSection from "../components/home/StatsSection";
+import WhyChooseSection from "../components/home/WhyChooseSection";
+import ServicesOverview from "../components/home/ServicesOverview";
+import WhoWeServePage from "../components/home/WhoWeServePage";
+import TestimonialsAndSoftwarePage from "../components/home/TestimonialsAndSoftwarePage";
 
 const Index = () => {
   return (

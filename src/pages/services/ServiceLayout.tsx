@@ -151,11 +151,11 @@ const ServiceLayout = ({
               </div>
               <div className="flex justify-between bg-white/10 p-4 rounded-xl">
                 <span>On-Time Delivery</span>
-                <span className="text-yellow-300 font-bold">95%</span>
+                <span className="text-yellow-300 font-bold">99%</span>
               </div>
               <div className="flex justify-between bg-white/10 p-4 rounded-xl">
                 <span>Client Satisfaction</span>
-                <span className="text-yellow-300 font-bold">97%</span>
+                <span className="text-yellow-300 font-bold">99%</span>
               </div>
             </div>
           </div>

@@ -113,7 +113,7 @@ const Industries = () => {
         }
         subtitle="Deep accounting expertise across diverse industries worldwide."
         achievements={[
-          { icon: Globe, text: 'Global Presence', detail: '20+ Countries' },
+          { icon: Globe, text: 'Global Presence', detail: '5+ Countries' },
           { icon: Award, text: 'Industry Trust', detail: 'Top Rated Firm' },
           { icon: TrendingUp, text: 'Proven Growth', detail: '40% YoY' },
         ]}
