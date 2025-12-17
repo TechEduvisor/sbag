@@ -97,41 +97,6 @@ const EnhancedContact = () => {
     });
   };
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "Phone",
-      content: "(+91) 98998-80973",
-      link: "tel:+919899880973",
-      gradient: "from-blue-500 to-cyan-500",
-      description: "Call us during business hours",
-    },
-    {
-      icon: Mail,
-      title: "Email",
-      content: "accountants@sbagllp.com",
-      link: "mailto:accountants@sbagllp.com",
-      gradient: "from-purple-500 to-pink-500",
-      description: "We reply within 24 hours",
-    },
-    {
-      icon: Linkedin,
-      title: "LinkedIn",
-      content: "Connect with us",
-      link: "https://www.linkedin.com/company/s-b-a-g-co-llp/",
-      gradient: "from-blue-600 to-blue-400",
-      description: "Follow our updates",
-    },
-    {
-      icon: Globe,
-      title: "Business Hours",
-      content: "Mon – Fri: 9 AM – 6 PM IST",
-      link: null,
-      gradient: "from-green-500 to-emerald-500",
-      description: "Available for consultations",
-    },
-  ];
-
   const offices = [
     {
       city: "Delhi",
@@ -331,7 +296,7 @@ const EnhancedContact = () => {
                       Microsoft Teams
                     </p>
                     <a
-                      href="https://teams.microsoft.com/"
+                      href="https://teams.microsoft.com/l/chat/0/0?users=sara@sbagllp.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-600 hover:text-primary transition"

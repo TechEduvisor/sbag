@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Linkedin, FacebookIcon } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, FacebookIcon, TerminalSquareIcon, Grid2X2 } from 'lucide-react';
 
 const Footer = () => {
  
@@ -80,6 +80,14 @@ const Footer = () => {
                 className="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
               >
                 <FacebookIcon size={20} />
+              </a>
+              <a
+                href="https://teams.microsoft.com/l/chat/0/0?users=sara@sbagllp.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+              >
+                <Grid2X2 size={20} />
               </a>
             </div>
           </div>
