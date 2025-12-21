@@ -152,7 +152,7 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin size={20} className="text-accent mt-1 flex-shrink-0" />
                 <div className="text-white/80">
-                  <p className="mb-2">House No. 3933/18, Near Metro Pillar No.225, Delhi – 110035</p>
+                  <p className="mb-2">3906/15 1st Floor, Kanhiya Nagar, Tri Nagar Delhi – 110035</p>
                     </div>
               </li> <li className="flex items-start space-x-3">
                 <MapPin size={20} className="text-accent mt-1 flex-shrink-0" />
