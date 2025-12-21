@@ -15,51 +15,73 @@ const AuditingService = () => {
       badgeText="Audit Support Services"
       title="US Auditing"
       highlight="Support"
-      description="End-to-end audit execution support for CPA firms to meet deadlines and quality standards."
+      description="Reliable, end-to-end audit execution support for CPA firms to meet timelines, quality benchmarks, and compliance standards."
       features={[
         {
           icon: FileCheck,
           title: "Audit Workpaper Preparation",
-          description: "GAAS-compliant audit workpapers aligned to firm methodology.",
+          description:
+            "GAAS-compliant audit workpapers aligned with firm-specific methodologies.",
         },
         {
           icon: Search,
           title: "Testing & Sampling",
-          description: "Substantive testing and control testing support.",
+          description:
+            "Substantive testing, walkthroughs, and control testing support.",
         },
         {
           icon: Shield,
           title: "Internal Control Evaluation",
-          description: "Assessment of ICFR and audit risk areas.",
+          description:
+            "Assessment of ICFR, key controls, and audit risk areas.",
         },
         {
           icon: BookOpen,
           title: "Audit Documentation",
-          description: "Clear, defensible audit documentation.",
+          description:
+            "Clear, review-ready, and defensible audit documentation.",
         },
         {
           icon: Users,
-          title: "Client Coordination",
-          description: "PBC tracking and audit coordination.",
+          title: "Client & PBC Coordination",
+          description:
+            "PBC request tracking and audit coordination support.",
         },
         {
           icon: Clock,
           title: "Ongoing Audit Support",
-          description: "Support across planning, fieldwork, and wrap-up.",
+          description:
+            "Support across planning, fieldwork, review, and wrap-up stages.",
         },
       ]}
       benefits={[
         "Faster audit turnaround",
-        "Improved audit quality",
-        "Scalable audit capacity",
-        "Lower engagement costs",
-        "US GAAS & PCAOB alignment",
+        "Improved audit quality & consistency",
+        "Scalable audit execution capacity",
+        "Lower engagement delivery costs",
+        "US GAAS & PCAOB-aligned support",
       ]}
       process={[
-        { step: "01", title: "Engagement Review", description: "Understand audit scope & tools." },
-        { step: "02", title: "Planning", description: "Allocate audit resources." },
-        { step: "03", title: "Execution", description: "Perform audit procedures." },
-        { step: "04", title: "Completion", description: "Finalize documentation & support." },
+        {
+          step: "01",
+          title: "Engagement Review",
+          description: "Understand audit scope, timelines, and tools.",
+        },
+        {
+          step: "02",
+          title: "Audit Planning",
+          description: "Allocate resources and align on procedures.",
+        },
+        {
+          step: "03",
+          title: "Audit Execution",
+          description: "Perform testing and prepare documentation.",
+        },
+        {
+          step: "04",
+          title: "Completion & Review",
+          description: "Finalize workpapers and provide review support.",
+        },
       ]}
       ctaTitle="Need Reliable Audit Support?"
     />
