@@ -81,8 +81,8 @@ export default function TestimonialsAndSoftwarePage() {
       color: 'from-green-700 to-emerald-700',
     },
     {
-      name: 'Microsoft Dynamics',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+      name: "Odoo Accounting",
+      logo: "https://cdn.worldvectorlogo.com/logos/odoo.svg",
       fallbackIcon: 'D365',
       color: 'from-blue-700 to-indigo-700',
     },

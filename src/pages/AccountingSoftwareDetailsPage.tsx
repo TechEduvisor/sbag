@@ -66,16 +66,16 @@ export default function AccountingSoftwareDetailsPage() {
     },
     {
       name: "Wave Accounting",
-      logo: "https://cdn.worldvectorlogo.com/logos/wave-1.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Wave_Accounting_logo.svg",
       fallbackIcon: "W",
       color: "from-cyan-500 to-blue-500",
       tag: "Bootstrapped • Micro Businesses",
       description:
-        "Cost-effective solution for small businesses needing basic accounting, invoicing, and receipt capture.",
+        "Cost-effective solution for very small businesses needing basic accounting, invoicing, and receipt capture.",
       strengths: [
         "Low cost of ownership",
         "Simple UI for basic accounting",
-        "Good fit for very small operations",
+        "Good fit for micro businesses",
       ],
     },
     {
@@ -104,6 +104,20 @@ export default function AccountingSoftwareDetailsPage() {
         "Built for strong audit trails",
         "Powerful dimensional reporting",
         "Great for nonprofits and multi-location entities",
+      ],
+    },
+     {
+      name: "Odoo Accounting",
+      logo: "https://cdn.worldvectorlogo.com/logos/odoo.svg",
+      fallbackIcon: "OD",
+      color: "from-purple-600 to-fuchsia-600",
+      tag: "SMBs • Modular ERP • Global",
+      description:
+        "Flexible, modular accounting as part of the Odoo ERP ecosystem. Ideal for growing businesses wanting customization.",
+      strengths: [
+        "Modular ERP with accounting at the core",
+        "Highly customizable workflows",
+        "Strong international adoption",
       ],
     },
   ];
