@@ -157,7 +157,7 @@ const EnhancedBlog = () => {
   return (
     <div className="min-h-screen pt-20 bg-background">
       {/* Hero Section */}
-      <section className="relative section-padding bg-gradient-to-br from-secondary to-forest-green overflow-hidden">
+      <section className="relative -padding py-20 bg-gradient-to-br from-secondary to-forest-green overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {activeParticles.map((particle) => (
@@ -308,7 +308,7 @@ const EnhancedBlog = () => {
       </section>
 
       {/* Blog Grid */}
-      <section className="section-padding bg-cream relative overflow-hidden">
+      <section className="py-20 bg-cream relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute bottom-0 left-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl animate-float" />
           <div className="absolute top-40 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float-delayed" />
