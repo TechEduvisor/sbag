@@ -1,98 +1,16 @@
 // File: src/pages/WhoWeServePage.jsx
 import { useState } from "react";
-import {
-  Building2,
-  ShoppingBag,
-  Stethoscope,
-  Code2,
-  Warehouse,
-  Scale,
-  X,
-  CheckCircle,
-} from "lucide-react";
+import { X, CheckCircle } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { industries } from "../../pages/Industries";
 
 export default function WhoWeServePage() {
   const [activeIndustry, setActiveIndustry] = useState(null);
   const navigate = useNavigate();
-  const industries = [
-    {
-      label: "E-Commerce Businesses",
-      description:
-        "End-to-end accounting for online stores, marketplaces, and D2C brands.",
-      details: [
-        "Marketplace reconciliation (Amazon, Shopify, Flipkart)",
-        "Inventory & COGS tracking",
-        "GST / Sales tax compliance",
-        "Profitability & cash-flow insights",
-      ],
-      icon: ShoppingBag,
-    },
-    {
-      label: "CPAs & Accounting Firms",
-      description:
-        "White-label bookkeeping, payroll, and back-office support for firms.",
-      details: [
-        "White-label bookkeeping teams",
-        "Payroll & compliance support",
-        "Client-ready reports",
-        "Scalable offshore support",
-      ],
-      icon: Scale,
-    },
-    {
-      label: "Real Estate & Property Management",
-      description:
-        "Property-wise reporting, escrow tracking, and rent accounting.",
-      details: [
-        "Property-level P&L",
-        "Rent & lease tracking",
-        "Escrow & trust accounting",
-        "Multi-entity consolidation",
-      ],
-      icon: Building2,
-    },
-    {
-      label: "Healthcare & Dental Clinics",
-      description:
-        "Clean financial visibility for clinics, labs, and practices.",
-      details: [
-        "Doctor-wise profitability",
-        "Insurance & billing reconciliation",
-        "Expense categorization",
-        "Regulatory-ready reports",
-      ],
-      icon: Stethoscope,
-    },
-    {
-      label: "IT & Software Companies",
-      description:
-        "Project-based accounting and SaaS metrics support.",
-      details: [
-        "Revenue recognition",
-        "Project & cost tracking",
-        "SaaS KPIs & MRR",
-        "Investor-ready dashboards",
-      ],
-      icon: Code2,
-    },
-    {
-      label: "Manufacturing & Wholesale",
-      description:
-        "Inventory, cost accounting, and multi-location consolidation.",
-      details: [
-        "Cost & margin analysis",
-        "Inventory valuation",
-        "Vendor reconciliation",
-        "Multi-plant reporting",
-      ],
-      icon: Warehouse,
-    },
-  ];
 
   return (
-    <div className="min-h-screen pt-20 bg-gradient-to-br from-secondary via-forest-green to-dark-olive text-white py-24 relative overflow-hidden">
+    <div className="min-h-screen pt-20 bg-gradient-to-br from-secondary via-forest-green to-dark-olive text-white py-20 relative overflow-hidden">
       {/* Background accents */}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-24 -left-24 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />
@@ -111,22 +29,25 @@ export default function WhoWeServePage() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {/* GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
           {industries.map((item, i) => {
             const Icon = item.icon;
+
             return (
               <button
                 key={i}
                 onClick={() => setActiveIndustry(item)}
                 className="text-left bg-white/10 backdrop-blur-md p-8 rounded-xl border border-white/10 
-                           hover:border-accent hover:bg-white/20 transition-all 
-                           hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30"
+                  hover:border-accent hover:bg-white/20 transition-all 
+                  hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30"
               >
                 <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-4">
                   <Icon className="w-7 h-7 text-accent" />
                 </div>
-                <p className="text-xl font-semibold mb-2">{item.label}</p>
+
+                {/* FIXED FIELD */}
+                <p className="text-xl font-semibold mb-2">{item.title}</p>
                 <p className="text-sm text-white/75">{item.description}</p>
               </button>
             );
@@ -160,22 +81,24 @@ export default function WhoWeServePage() {
                 <X />
               </button>
 
-              {/* Content */}
+              {/* Header */}
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
                   <activeIndustry.icon className="w-7 h-7 text-primary" />
                 </div>
                 <h2 className="text-2xl font-bold">
-                  {activeIndustry.label}
+                  {activeIndustry.title}
                 </h2>
               </div>
 
+              {/* Description */}
               <p className="text-gray-800 mb-6">
-                {activeIndustry.description}
+                {activeIndustry.longDescription}
               </p>
 
+              {/* Highlights */}
               <div className="space-y-3 mb-8">
-                {activeIndustry.details.map((point, idx) => (
+                {activeIndustry.highlights.map((point, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-primary mt-0.5" />
                     <span className="text-sm">{point}</span>
@@ -183,7 +106,10 @@ export default function WhoWeServePage() {
                 ))}
               </div>
 
-              <button onClick={() => navigate("/contact") } className="w-full bg-primary text-white py-3 rounded-xl font-semibold hover:bg-accent transition">
+              <button
+                onClick={() => navigate("/contact")}
+                className="w-full bg-primary text-white py-3 rounded-xl font-semibold hover:bg-accent transition"
+              >
                 Talk to an Expert
               </button>
             </motion.div>

@@ -27,26 +27,7 @@ type Industry = {
   highlights: string[];
   services: string[];
 };
-
-const Industries = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [openIndustry, setOpenIndustry] = useState<Industry | null>(null);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  // Close modal on ESC
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenIndustry(null);
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
-
-  const industries: Industry[] = [
+export const industries: Industry[] = [
     {
       icon: Briefcase,
       title: "CPA Firms",
@@ -205,6 +186,25 @@ const Industries = () => {
       ],
     },
   ];
+const Industries = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [openIndustry, setOpenIndustry] = useState<Industry | null>(null);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  // Close modal on ESC
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenIndustry(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
+  
 
   return (
     <div className="min-h-screen pt-20 bg-background">
