@@ -79,8 +79,8 @@ const ServicesOverview = () => {
 ];
 
   const features = [
-    { icon: Sparkles, text: 'Expert Team', value: '12+' },
-    { icon: TrendingUp, text: 'Success Rate', value: '' },
+    { icon: Sparkles, text: 'Expert Team', value: '20+' },
+    { icon: TrendingUp, text: 'Success Rate', value: '99%' },
     { icon: Users, text: 'Happy Clients', value: '50+' },
   ];
 

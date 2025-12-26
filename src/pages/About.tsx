@@ -1,29 +1,45 @@
 import { useState, useEffect } from 'react';
-import { Target, Eye, Heart, Users, Award, TrendingUp, Globe, Shield, Sparkles, ChevronRight } from 'lucide-react';
-import { Linkedin } from 'lucide-react';
+import {
+  Target,
+  Eye,
+  Heart,
+  Users,
+  Award,
+  TrendingUp,
+  Globe,
+  Shield,
+  Sparkles,
+} from 'lucide-react';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredValue, setHoveredValue] = useState(null);
-  const [hoveredStat, setHoveredStat] = useState(null);
-  const [activeParticles, setActiveParticles] = useState([]);
+  const [hoveredValue, setHoveredValue] = useState<number | null>(null);
+  const [hoveredStat, setHoveredStat] = useState<number | null>(null);
+  const [activeParticles, setActiveParticles] = useState<any[]>([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-const [expandedFounder, setExpandedFounder] = useState<null | 'ankit' | 'sudhanshu'>(null);
-const ankitShort =
-  "Member of the Institute of Chartered Accountants of India with over 12 years of experience in Accounting and Taxation for Indian, UK, and US clients.";
+  const [expandedFounder, setExpandedFounder] = useState<
+    null | 'ankit' | 'sudhanshu'
+  >(null);
 
-const ankitFull =
-  "Member of the Institute of Chartered Accountants of India with over 12 years of experience in Accounting and Taxation for Indian, UK, and US clients. Holds a Bachelor's degree in Commerce along with a Diploma in IFRS. Certified QuickBooks and Xero Advisor with deep expertise in multi-country compliance and financial reporting.";
-const sudhanshuShort =
-  "Qualified Chartered Accountant with strong experience in Auditing and Accounting.";
+  /* ================= FOUNDER CONTENT ================= */
 
-const sudhanshuFull =
-  "Qualified Chartered Accountant with strong experience in Auditing and Accounting. With years of hands-on experience in Bookkeeping, Accounting, and Statutory Audits, he actively supports US-based entities in bookkeeping, payroll taxation, and accounting services.";
+  const ankitShort =
+    "Chartered Accountant and Founding Partner with over 12 years of experience in Assurance, Advisory, and global accounting services.";
+
+  const ankitFull =
+    "Ankit Gupta is a member of the Institute of Chartered Accountants of India (ICAI) and holds a Bachelor's degree in Commerce from the University of Delhi. He also holds a Diploma in IFRS and is a Certified Forensic Auditor from ICAI. Additionally, he is a QuickBooks ProAdvisor and Xero Certified Advisor.\n\nWith over 12 years of professional experience in Assurance and Advisory Services, Ankit has developed strong expertise in statutory audits, due diligence reviews, forensic audits, business advisory, US bookkeeping, IFRS reporting, and process reviews.\n\nAnkit leads the firm’s Accounting and Bookkeeping practice and heads the Forensic Audit and Due Diligence Division. He is also actively involved in training, recruitment, and quality control initiatives, ensuring the firm’s commitment to professional excellence. He has successfully led transaction audits under the Insolvency and Bankruptcy Code, 2016, including the case of Venessa Metals & Alloys Private Limited.";
+
+  const sudhanshuShort =
+    "Chartered Accountant and Partner specializing in cross-border accounting for US and UK markets.";
+
+  const sudhanshuFull =
+    "Sudhanshu Bansal is a Chartered Accountant and Partner at S B A G & CO LLP, specializing in cross-border accounting solutions for US and UK markets. With over 7 years of progressive experience spanning auditing, taxation, and financial operations, he brings both technical precision and strategic insight to complex accounting challenges.\n\nHis expertise encompasses US bookkeeping, payroll management, statutory and bank audits, and GST compliance, with particular depth in handling inverted tax structures and export-related refunds. Having previously led accounting teams at a leading outsourcing firm, Sudhanshu developed a reputation for building efficient processes and delivering accurate, timely financial reporting for international clients.\n\nA Xero Advisor and QuickBooks expert, Sudhanshu understands that modern accounting requires more than compliance. It demands systems that scale, data that drives decisions, and teams that execute flawlessly. At S B A G & CO LLP, he leads initiatives to help CPA firms and accounting practices build dedicated offshore teams, enabling them to expand capacity without compromising quality.";
+
+  /* ================= EFFECTS ================= */
 
   useEffect(() => {
     setIsVisible(true);
-    
-    // Generate particles
+
     const particles = Array.from({ length: 25 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -34,11 +50,8 @@ const sudhanshuFull =
     }));
     setActiveParticles(particles);
 
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -350,203 +363,127 @@ const sudhanshuFull =
         </span>
       </div>
 
-      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Our <span className="text-primary">Founders</span>
-      </h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Our <span className="text-primary">Founders</span>
+            </h2>
 
-      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-        Experienced Chartered Accountants leading the firm with integrity,
-        expertise, and global perspective.
-      </p>
-    </div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Experienced Chartered Accountants leading the firm with integrity,
+              expertise, and global perspective.
+            </p>
+          </div>
 
-    {/* FOUNDERS LIST */}
-    <div className="space-y-20 max-w-5xl mx-auto">
-      {/* ================= ANKIT GUPTA ================= */}
-      <div className="flex flex-col md:flex-row gap-10 items-start">
-        {/* Image */}
-        <div className="flex-shrink-0">
-          <div className="relative">
-            <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
-              <img
-                src="/photo2.png"
-                alt="Ankit Gupta - Founding Partner"
-                className="w-full h-full object-cover"
-              />
+          <div className="space-y-20 max-w-5xl mx-auto">
+            {/* ================= ANKIT ================= */}
+            <div className="flex flex-col md:flex-row gap-10 items-start">
+              <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+                <img
+                  src="/photo2.png"
+                  alt="Ankit Gupta"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-3xl font-bold text-gray-900 mb-1">
+                  Ankit Gupta
+                </h3>
+                <p className="text-primary font-semibold mb-4">
+                  Founding Partner
+                </p>
+
+                <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+                  {expandedFounder === 'ankit' ? ankitFull : ankitShort}
+                </p>
+
+                <div className="mt-4 flex items-center gap-4">
+                  <button
+                    onClick={() =>
+                      setExpandedFounder(
+                        expandedFounder === 'ankit' ? null : 'ankit'
+                      )
+                    }
+                    className="text-primary font-medium text-sm hover:underline"
+                  >
+                    {expandedFounder === 'ankit'
+                      ? 'View Less'
+                      : 'View More'}
+                  </button>
+
+                  <a
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:scale-110 transition"
+                  >
+                    <img
+                      src="https://img.icons8.com/color/48/linkedin.png"
+                      alt="LinkedIn"
+                      className="w-6 h-6"
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div className="absolute bottom-3 right-3 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
-              <Award className="w-6 h-6 text-white" />
+            {/* ================= SUDHANSHU ================= */}
+            <div className="flex flex-col md:flex-row gap-10 items-start">
+              <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+                <img
+                  src="/photo1.png"
+                  alt="Sudhanshu Bansal"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="flex-1">
+                <h3 className="text-3xl font-bold text-gray-900 mb-1">
+                  Sudhanshu Bansal
+                </h3>
+                <p className="text-primary font-semibold mb-4">
+                  Co-Founder & Partner
+                </p>
+
+                <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+                  {expandedFounder === 'sudhanshu'
+                    ? sudhanshuFull
+                    : sudhanshuShort}
+                </p>
+
+                <div className="mt-4 flex items-center gap-4">
+                  <button
+                    onClick={() =>
+                      setExpandedFounder(
+                        expandedFounder === 'sudhanshu'
+                          ? null
+                          : 'sudhanshu'
+                      )
+                    }
+                    className="text-primary font-medium text-sm hover:underline"
+                  >
+                    {expandedFounder === 'sudhanshu'
+                      ? 'View Less'
+                      : 'View More'}
+                  </button>
+
+                  <a
+                    href="https://www.linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:scale-110 transition"
+                  >
+                    <img
+                      src="https://img.icons8.com/color/48/linkedin.png"
+                      alt="LinkedIn"
+                      className="w-6 h-6"
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Content */}
-        <div className="flex-1 text-left">
-          <h3 className="text-3xl font-bold text-gray-900 mb-1">
-            Ankit Gupta
-          </h3>
-
-          <p className="text-primary font-semibold mb-4">
-            Founding Partner
-          </p>
-
-          <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
-            {expandedFounder === 'ankit' ? ankitFull : ankitShort}
-          </p>
-
-          {/* Actions */}
-          <div className="mt-4 flex items-center gap-4">
-            <button
-              onClick={() =>
-                setExpandedFounder(
-                  expandedFounder === 'ankit' ? null : 'ankit'
-                )
-              }
-              className="text-primary font-medium text-sm hover:underline"
-            >
-              {expandedFounder === 'ankit' ? 'View Less' : 'View More'}
-            </button>
-
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-500 hover:text-primary transition"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* ================= SUDHANSHU BANSAL ================= */}
-      <div className="flex flex-col md:flex-row gap-10 items-start">
-        {/* Image */}
-        <div className="flex-shrink-0">
-          <div className="relative">
-            <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
-              <img
-                src="/photo1.png"
-                alt="Sudhanshu Bansal - Co-Founder"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="absolute bottom-3 right-3 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
-              <Award className="w-6 h-6 text-white" />
-            </div>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="flex-1 text-left">
-          <h3 className="text-3xl font-bold text-gray-900 mb-1">
-            Sudhanshu Bansal
-          </h3>
-
-          <p className="text-primary font-semibold mb-4">
-            Co-Founder
-          </p>
-
-          <p className="text-gray-600 text-sm leading-relaxed max-w-2xl">
-            {expandedFounder === 'sudhanshu'
-              ? sudhanshuFull
-              : sudhanshuShort}
-          </p>
-
-          {/* Actions */}
-          <div className="mt-4 flex items-center gap-4">
-            <button
-              onClick={() =>
-                setExpandedFounder(
-                  expandedFounder === 'sudhanshu' ? null : 'sudhanshu'
-                )
-              }
-              className="text-primary font-medium text-sm hover:underline"
-            >
-              {expandedFounder === 'sudhanshu'
-                ? 'View Less'
-                : 'View More'}
-            </button>
-
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-500 hover:text-primary transition"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-      <style>{`
-        @keyframes particle {
-          0% { transform: translateY(0) scale(0); opacity: 0; }
-          50% { opacity: 1; }
-          100% { transform: translateY(-100vh) scale(1); opacity: 0; }
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          33% { transform: translate(30px, -30px) rotate(5deg); }
-          66% { transform: translate(-20px, 20px) rotate(-5deg); }
-        }
-
-        @keyframes float-delayed {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          33% { transform: translate(-30px, 30px) rotate(-5deg); }
-          66% { transform: translate(20px, -20px) rotate(5deg); }
-        }
-
-        @keyframes pulse-subtle {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.02); opacity: 0.9; }
-        }
-
-        @keyframes pulse-glow {
-          0%, 100% { opacity: 0.5; transform: scale(0.95); }
-          50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
-        .animate-particle {
-          animation: particle linear infinite;
-        }
-
-        .animate-float {
-          animation: float 20s ease-in-out infinite;
-        }
-
-        .animate-float-delayed {
-          animation: float-delayed 25s ease-in-out infinite;
-        }
-
-        .animate-pulse-subtle {
-          animation: pulse-subtle 3s ease-in-out infinite;
-        }
-
-        .animate-pulse-glow {
-          animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        .animate-spin-slow {
-          animation: spin-slow 3s linear infinite;
-        }
-      `}</style>
+      </section>
     </div>
   );
 };

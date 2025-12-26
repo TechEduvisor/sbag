@@ -65,31 +65,50 @@ const Footer = () => {
             <p className="text-white/80 mb-6">
               Your trustedpartner for bookkeeping, accounting, and audit support services with experienced US GAAP professionals.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.linkedin.com/company/s-b-a-g-co-llp/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
-              >
-                <Linkedin size={20} />
-              </a> <a
-                href="https://www.facebook.com/sbagllp"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
-              >
-                <FacebookIcon size={20} />
-              </a>
-              <a
-                href="https://teams.microsoft.com/l/chat/0/0?users=sara@sbagllp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
-              >
-                <Grid2X2 size={20} />
-              </a>
-            </div>
+           <div className="flex space-x-4">
+  {/* LinkedIn */}
+  <a
+    href="https://www.linkedin.com/company/s-b-a-g-co-llp/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+  >
+    <img
+      src="https://img.icons8.com/color/48/linkedin.png"
+      alt="LinkedIn"
+      className="w-6 h-6"
+    />
+  </a>
+
+  {/* Facebook */}
+  <a
+    href="https://www.facebook.com/sbagllp"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+  >
+    <img
+      src="https://img.icons8.com/color/48/facebook-new.png"
+      alt="Facebook"
+      className="w-6 h-6"
+    />
+  </a>
+
+  {/* Microsoft Teams */}
+  <a
+    href="https://teams.microsoft.com/l/chat/0/0?users=sara@sbagllp.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+  >
+    <img
+      src="https://img.icons8.com/color/48/microsoft-teams.png"
+      alt="Microsoft Teams"
+      className="w-6 h-6"
+    />
+  </a>
+</div>
+
           </div>
 
           {/* Quick Links */}
