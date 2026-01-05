@@ -138,7 +138,7 @@ export default function TestimonialsAndSoftwarePage() {
   };
 
   return (
-    <div className="min-h-screen mt-20 bg-secondary text-white py-24 relative overflow-hidden">
+    <div className="min-h-screen mt-10 bg-secondary text-white py-12 relative overflow-hidden">
       {/* Soft background accents */}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-32 -left-20 w-80 h-80 bg-primary/30 rounded-full blur-3xl" />
@@ -155,7 +155,7 @@ export default function TestimonialsAndSoftwarePage() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-6">
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="text-sm font-semibold tracking-wide text-white/80 uppercase">
@@ -172,8 +172,8 @@ export default function TestimonialsAndSoftwarePage() {
         </div>
 
         {/* Google Reviews Section */}
-        <div className="mb-20">
-          <div className="text-center mb-12">
+        <div className="mb-10">
+          <div className="text-center mb-8">
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 mb-6">
               <img
                 src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
@@ -201,13 +201,13 @@ export default function TestimonialsAndSoftwarePage() {
                 key={i}
                 className="relative bg-gradient-to-br from-white/12 to-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/20 hover:border-accent/50 transition-all hover:scale-105 hover:shadow-2xl"
               >
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
+                {/* <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
                   <img
                     src="https://www.google.com/favicon.ico"
                     alt="Google"
                     className="w-8 h-8"
                   />
-                </div>
+                </div> */}
 
                 <div className="mb-4">
                   <h3 className="text-xl font-bold text-white mb-1">{review.name}</h3>
