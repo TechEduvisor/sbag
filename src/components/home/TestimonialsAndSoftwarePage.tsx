@@ -173,7 +173,7 @@ export default function TestimonialsAndSoftwarePage() {
 
         {/* Google Reviews Section */}
         <div className="mb-10">
-          <div className="text-center mb-8">
+          {/* <div className="text-center mb-8">
             <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 mb-6">
               <img
                 src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
@@ -193,7 +193,7 @@ export default function TestimonialsAndSoftwarePage() {
                 <p className="text-white/60 text-sm">Based on 3 reviews</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-8">
             {googleReviews.map((review, i) => (
