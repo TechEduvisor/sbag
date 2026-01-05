@@ -66,7 +66,7 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section className=" pt-20 bg-background relative overflow-hidden">
+    <section className=" pt-10 bg-background relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Gradient Orbs */}
