@@ -37,56 +37,80 @@ export default function TestimonialsAndSoftwarePage() {
     },
   ];
 
-  const softwares = [
-    {
-      name: 'QuickBooks Online',
-       fallbackIcon: 'S',
-       color: 'from-green-700 to-emerald-700',
-      logo: 'https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg',
-    },
-    {
-      name: 'Xero',
-      fallbackIcon: 'X',
-      color: 'from-blue-500 to-blue-600',
-      logo: 'https://cdn.worldvectorlogo.com/logos/xero-1.svg',
-    },
-    {
-      name: 'NetSuite',
-      logo: 'https://cdn.worldvectorlogo.com/logos/netsuite-1.svg',
-      fallbackIcon: 'NS',
-      color: 'from-red-600 to-red-700',
-    },
-    {
-      name: 'FreshBooks',
-      logo: 'https://cdn.worldvectorlogo.com/logos/freshbooks-1.svg',
-      fallbackIcon: 'FB',
-      color: 'from-blue-600 to-indigo-600',
-    },
-    {
-      name: 'Wave Accounting',
-      logo: 'https://cdn.worldvectorlogo.com/logos/wave-1.svg',
-      fallbackIcon: 'W',
-      color: 'from-cyan-500 to-blue-500',
-    },
-    {
-      name: 'Zoho Books',
-      logo: 'https://cdn.worldvectorlogo.com/logos/zoho-1.svg',
-      fallbackIcon: 'ZB',
-      color: 'from-yellow-600 to-orange-600',
-    },
-    {
-      name: 'Sage Intacct',
-      logo: 'https://cdn.worldvectorlogo.com/logos/sage-2.svg',
-      fallbackIcon: 'S',
-      color: 'from-green-700 to-emerald-700',
-    },
-    {
-      name: "Odoo Accounting",
-      logo: "https://cdn.worldvectorlogo.com/logos/odoo.svg",
-      fallbackIcon: 'D365',
-      color: 'from-blue-700 to-indigo-700',
-    },
-  ];
+ const softwares = [
+  {
+    name: 'QuickBooks',
+    fallbackIcon: 'QB',
+    color: 'from-green-700 to-emerald-700',
+    logo: 'https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg',
+  },
+  {
+    name: 'Sage',
+    fallbackIcon: 'S',
+    color: 'from-green-700 to-emerald-700',
+    logo: 'https://cdn.worldvectorlogo.com/logos/sage-2.svg',
+  },
+  {
+    name: 'Xero',
+    fallbackIcon: 'X',
+    color: 'from-blue-500 to-blue-600',
+    logo: 'https://cdn.worldvectorlogo.com/logos/xero-1.svg',
+  },
+  {
+    name: 'Wave',
+    fallbackIcon: 'W',
+    color: 'from-cyan-500 to-blue-500',
+    logo: 'https://cdn.worldvectorlogo.com/logos/wave-1.svg',
+  },
+  {
+    name: 'NetSuite',
+    logo: 'https://cdn.worldvectorlogo.com/logos/netsuite-1.svg',
+    fallbackIcon: 'NS',
+    color: 'from-red-600 to-red-700',
+  },
+  {
+    name: 'Zoho Books',
+    logo: 'https://cdn.worldvectorlogo.com/logos/zoho-1.svg',
+    fallbackIcon: 'ZB',
+    color: 'from-yellow-600 to-orange-600',
+  },
+  {
+    name: 'UltraTax',
+    logo: 'https://cdn.worldvectorlogo.com/logos/thomson-reuters.svg',
+    fallbackIcon: 'UT',
+    color: 'from-blue-700 to-blue-800',
+  },
+  {
+    name: 'TurboTax',
+    logo: 'https://cdn.worldvectorlogo.com/logos/turbotax.svg',
+    fallbackIcon: 'TT',
+    color: 'from-red-500 to-red-600',
+  },
+  {
+    name: 'ProConnect',
+    logo: 'https://cdn.worldvectorlogo.com/logos/intuit.svg',
+    fallbackIcon: 'PC',
+    color: 'from-blue-600 to-blue-700',
+  },
+  {
+    name: 'ADP Payroll',
+    logo: 'https://cdn.worldvectorlogo.com/logos/adp-3.svg',
+    fallbackIcon: 'ADP',
+    color: 'from-red-600 to-red-700',
+  },
+  {
+    name: 'Gusto',
+    logo: 'https://cdn.worldvectorlogo.com/logos/gusto-1.svg',
+    fallbackIcon: 'G',
+    color: 'from-orange-500 to-red-500',
+  },
+  {
+    name: 'Paychex',
+    logo: 'https://cdn.worldvectorlogo.com/logos/paychex.svg',
+    fallbackIcon: 'PX',
+    color: 'from-blue-600 to-indigo-600',
+  },
+];
 const [selectedSoftware, setSelectedSoftware] = useState<Software | null>(null);
 
   const handleImageError = (

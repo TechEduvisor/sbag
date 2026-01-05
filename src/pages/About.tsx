@@ -22,20 +22,28 @@ const About = () => {
     null | 'ankit' | 'sudhanshu'
   >(null);
 
-  /* ================= FOUNDER CONTENT ================= */
-
   const ankitShort =
-    "Chartered Accountant and Founding Partner with over 12 years of experience in Assurance, Advisory, and global accounting services.";
+  "Chartered Accountant and Founding Partner with over 12 years of experience in Assurance and Advisory. He leads the firm’s forensic audit division and specializes in IFRS reporting and business advisory for a diverse global clientele.";
 
-  const ankitFull =
-    "Ankit Gupta is a member of the Institute of Chartered Accountants of India (ICAI) and holds a Bachelor's degree in Commerce from the University of Delhi. He also holds a Diploma in IFRS and is a Certified Forensic Auditor from ICAI. Additionally, he is a QuickBooks ProAdvisor and Xero Certified Advisor.\n\nWith over 12 years of professional experience in Assurance and Advisory Services, Ankit has developed strong expertise in statutory audits, due diligence reviews, forensic audits, business advisory, US bookkeeping, IFRS reporting, and process reviews.\n\nAnkit leads the firm’s Accounting and Bookkeeping practice and heads the Forensic Audit and Due Diligence Division. He is also actively involved in training, recruitment, and quality control initiatives, ensuring the firm’s commitment to professional excellence. He has successfully led transaction audits under the Insolvency and Bankruptcy Code, 2016, including the case of Venessa Metals & Alloys Private Limited.";
+const sudhanshuShort =
+  "Chartered Accountant and Partner specializing in cross-border accounting and financial operations for US and UK markets. He focuses on building dedicated offshore teams for CPA firms, helping them scale capacity through efficient, modern accounting systems.";
+const ankitFull = `Ankit Gupta is a member of the Institute of Chartered Accountants of India (ICAI) and holds a Bachelor's degree in Commerce from the University of Delhi. He also holds a Diploma in IFRS and is a Certified Forensic Auditor from ICAI. Additionally, he is a QuickBooks ProAdvisor and Xero Certified Advisor.
 
-  const sudhanshuShort =
-    "Chartered Accountant and Partner specializing in cross-border accounting for US and UK markets.";
+With over 12 years of professional experience in Assurance and Advisory Services, Ankit has developed strong expertise in statutory audits, due diligence reviews, forensic audits, business advisory, US bookkeeping, IFRS reporting, and process reviews.
 
-  const sudhanshuFull =
-    "Sudhanshu Bansal is a Chartered Accountant and Partner at S B A G & CO LLP, specializing in cross-border accounting solutions for US and UK markets. With over 7 years of progressive experience spanning auditing, taxation, and financial operations, he brings both technical precision and strategic insight to complex accounting challenges.\n\nHis expertise encompasses US bookkeeping, payroll management, statutory and bank audits, and GST compliance, with particular depth in handling inverted tax structures and export-related refunds. Having previously led accounting teams at a leading outsourcing firm, Sudhanshu developed a reputation for building efficient processes and delivering accurate, timely financial reporting for international clients.\n\nA Xero Advisor and QuickBooks expert, Sudhanshu understands that modern accounting requires more than compliance. It demands systems that scale, data that drives decisions, and teams that execute flawlessly. At S B A G & CO LLP, he leads initiatives to help CPA firms and accounting practices build dedicated offshore teams, enabling them to expand capacity without compromising quality.";
+Ankit leads the firm’s Accounting and Bookkeeping practice and heads the Forensic Audit and Due Diligence Division. He is also actively involved in training, recruitment, and quality control initiatives, ensuring the firm’s commitment to professional excellence. He has successfully led transaction audits under the Insolvency and Bankruptcy Code, 2016, including the case of Venessa Metals & Alloys Private Limited.
 
+Over the years, Ankit has handled assignments for a diverse clientele including public sector banks, private companies, co-operative societies, trusts, and NGOs.`;
+
+const sudhanshuFull = `Sudhanshu Bansal is a Chartered Accountant and Partner at S B A G & CO LLP, specializing in cross-border accounting solutions for US and UK markets. With over 7 years of progressive experience spanning auditing, taxation, and financial operations, he brings both technical precision and strategic insight to complex accounting challenges.
+
+His expertise encompasses US bookkeeping, payroll management, statutory and bank audits, and GST compliance, with particular depth in handling inverted tax structures and export-related refunds. Having previously led accounting teams at a leading outsourcing firm, Sudhanshu developed a reputation for building efficient processes and delivering accurate, timely financial reporting for international clients.
+
+A Xero Advisor and QuickBooks expert, Sudhanshu understands that modern accounting requires more than compliance. It demands systems that scale, data that drives decisions, and teams that execute flawlessly. At S B A G & CO LLP, he leads initiatives to help CPA firms and accounting practices build dedicated offshore teams, enabling them to expand capacity without compromising quality.
+
+Sudhanshu holds his Chartered Accountant designation from The Institute of Chartered Accountants of India and a Bachelor of Commerce from Chatrapati Sahuji Maharaj Kanpur University. He is committed to making financial operations seamless for growing businesses and accounting firms navigating the complexities of global commerce.
+
+When not balancing books, he’s watching Marvel movies, convinced Thanos could’ve avoided half his problems with a good accountant.`;
   /* ================= EFFECTS ================= */
 
   useEffect(() => {
@@ -364,127 +372,119 @@ const About = () => {
         </span>
       </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our <span className="text-primary">Founders</span>
-            </h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Our <span className="text-primary">Founders</span>
+      </h2>
 
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experienced Chartered Accountants leading the firm with integrity,
-              expertise, and global perspective.
-            </p>
-          </div>
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        Experienced Chartered Accountants leading the firm with integrity,
+        expertise, and global perspective.
+      </p>
+    </div>
 
-          <div className="space-y-20 max-w-5xl mx-auto">
-            {/* ================= ANKIT ================= */}
-            <div className="flex flex-col md:flex-row gap-10 items-start">
-              <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
-                <img
-                  src="/photo2.png"
-                  alt="Ankit Gupta"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+    <div className="space-y-20 max-w-5xl mx-auto">
+      {/* ================= ANKIT (Image Left, Content Right) ================= */}
+      <div className="flex flex-col md:flex-row gap-10 items-start">
+        <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl shrink-0">
+          <img
+            src="/photo2.png"
+            alt="Ankit Gupta"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-              <div className="flex-1">
-                <h3 className="text-3xl font-bold text-gray-900 mb-1">
-                  Ankit Gupta
-                </h3>
-                <p className="text-primary font-semibold mb-4">
-                  Founding Partner
-                </p>
+        <div className="flex-1">
+          <h3 className="text-3xl font-bold text-gray-900 mb-1">
+            Ankit Gupta
+          </h3>
+          <p className="text-primary font-semibold mb-4">
+            Founding Partner
+          </p>
 
-                <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
-                  {expandedFounder === 'ankit' ? ankitFull : ankitShort}
-                </p>
+          <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+            {expandedFounder === 'ankit' ? ankitFull : ankitShort}
+          </p>
 
-                <div className="mt-4 flex items-center gap-4">
-                  <button
-                    onClick={() =>
-                      setExpandedFounder(
-                        expandedFounder === 'ankit' ? null : 'ankit'
-                      )
-                    }
-                    className="text-primary font-medium text-sm hover:underline"
-                  >
-                    {expandedFounder === 'ankit'
-                      ? 'View Less'
-                      : 'View More'}
-                  </button>
+          <div className="mt-4 flex items-center gap-4">
+            <button
+              onClick={() =>
+                setExpandedFounder(
+                  expandedFounder === 'ankit' ? null : 'ankit'
+                )
+              }
+              className="text-primary font-medium text-sm hover:underline"
+            >
+              {expandedFounder === 'ankit' ? 'View Less' : 'View More'}
+            </button>
 
-                  <a
-                    href="https://www.linkedin.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:scale-110 transition"
-                  >
-                    <img
-                      src="https://img.icons8.com/color/48/linkedin.png"
-                      alt="LinkedIn"
-                      className="w-6 h-6"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* ================= SUDHANSHU ================= */}
-            <div className="flex flex-col md:flex-row gap-10 items-start">
-              <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
-                <img
-                  src="/photo1.png"
-                  alt="Sudhanshu Bansal"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="flex-1">
-                <h3 className="text-3xl font-bold text-gray-900 mb-1">
-                  Sudhanshu Bansal
-                </h3>
-                <p className="text-primary font-semibold mb-4">
-                  Co-Founder & Partner
-                </p>
-
-                <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
-                  {expandedFounder === 'sudhanshu'
-                    ? sudhanshuFull
-                    : sudhanshuShort}
-                </p>
-
-                <div className="mt-4 flex items-center gap-4">
-                  <button
-                    onClick={() =>
-                      setExpandedFounder(
-                        expandedFounder === 'sudhanshu'
-                          ? null
-                          : 'sudhanshu'
-                      )
-                    }
-                    className="text-primary font-medium text-sm hover:underline"
-                  >
-                    {expandedFounder === 'sudhanshu'
-                      ? 'View Less'
-                      : 'View More'}
-                  </button>
-
-                  <a
-                    href="https://www.linkedin.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:scale-110 transition"
-                  >
-                    <img
-                      src="https://img.icons8.com/color/48/linkedin.png"
-                      alt="LinkedIn"
-                      className="w-6 h-6"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition"
+            >
+              <img
+                src="https://img.icons8.com/color/48/linkedin.png"
+                alt="LinkedIn"
+                className="w-6 h-6"
+              />
+            </a>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* ================= SUDHANSHU (Image Right, Content Left) ================= */}
+      <div className="flex flex-col md:flex-row-reverse gap-10 items-start">
+        <div className="w-52 h-52 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl shrink-0">
+          <img
+            src="/photo1.png"
+            alt="Sudhanshu Bansal"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="flex-1">
+          <h3 className="text-3xl font-bold text-gray-900 mb-1">
+            Sudhanshu Bansal
+          </h3>
+          <p className="text-primary font-semibold mb-4">
+            Co-Founder & Partner
+          </p>
+
+          <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+            {expandedFounder === 'sudhanshu' ? sudhanshuFull : sudhanshuShort}
+          </p>
+
+          <div className="mt-4 flex items-center gap-4">
+            <button
+              onClick={() =>
+                setExpandedFounder(
+                  expandedFounder === 'sudhanshu' ? null : 'sudhanshu'
+                )
+              }
+              className="text-primary font-medium text-sm hover:underline"
+            >
+              {expandedFounder === 'sudhanshu' ? 'View Less' : 'View More'}
+            </button>
+
+            
+            <a  href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-110 transition"
+            >
+              <img
+                src="https://img.icons8.com/color/48/linkedin.png"
+                alt="LinkedIn"
+                className="w-6 h-6"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 };

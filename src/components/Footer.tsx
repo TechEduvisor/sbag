@@ -79,6 +79,18 @@ const Footer = () => {
       className="w-6 h-6"
     />
   </a>
+  <a
+    href="https://www.instagram.com/your_username_here" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+  >
+    <img
+      src="https://img.icons8.com/color/48/instagram-new.png"
+      alt="Instagram"
+      className="w-6 h-6"
+    />
+  </a>
 
   {/* Facebook */}
   <a

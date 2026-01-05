@@ -7,120 +7,176 @@ import {
 import HeroSection from "../components/HeroSection";
 
 export default function AccountingSoftwareDetailsPage() {
-  const softwares = [
-    {
-      name: "QuickBooks Online",
-      logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg",
-      fallbackIcon: "QB",
-      color: "from-green-700 to-emerald-700",
-      tag: "SMBs • CPAs • Global",
-      description:
-        "Cloud-based accounting for small and mid-sized businesses. Ideal for day-to-day bookkeeping, invoicing, and reconciliation.",
-      strengths: [
-        "Strong ecosystem of apps & integrations",
-        "Bank feeds and automated rules",
-        "Widely adopted by US and global CPAs",
-      ],
-    },
-    {
-      name: "Xero",
-      logo: "https://cdn.worldvectorlogo.com/logos/xero-1.svg",
-      fallbackIcon: "X",
-      color: "from-blue-500 to-blue-600",
-      tag: "Startups • Remote Teams",
-      description:
-        "Modern, cloud-native platform with great UX. Perfect for distributed teams and multi-currency businesses.",
-      strengths: [
-        "Excellent multi-currency support",
-        "Clean, intuitive interface",
-        "Powerful API for automation",
-      ],
-    },
-    {
-      name: "NetSuite",
-      logo: "https://cdn.worldvectorlogo.com/logos/netsuite-1.svg",
-      fallbackIcon: "NS",
-      color: "from-red-600 to-red-700",
-      tag: "Mid–Enterprise • Multi-Entity",
-      description:
-        "Full-fledged ERP with advanced financials, suitable for growing companies needing deep controls and consolidation.",
-      strengths: [
-        "Robust multi-entity & consolidation feature set",
-        "Advanced reporting & approval workflows",
-        "Scalable as business complexity grows",
-      ],
-    },
-    {
-      name: "FreshBooks",
-      logo: "https://cdn.worldvectorlogo.com/logos/freshbooks-1.svg",
-      fallbackIcon: "FB",
-      color: "from-blue-600 to-indigo-600",
-      tag: "Freelancers • Agencies",
-      description:
-        "Client-centric accounting with simple time tracking, invoicing, and expense management.",
-      strengths: [
-        "Great for service-based businesses",
-        "Clean invoicing & expense workflows",
-        "Easy for non-finance founders to use",
-      ],
-    },
-    {
-      name: "Wave Accounting",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Wave_Accounting_logo.svg",
-      fallbackIcon: "W",
-      color: "from-cyan-500 to-blue-500",
-      tag: "Bootstrapped • Micro Businesses",
-      description:
-        "Cost-effective solution for very small businesses needing basic accounting, invoicing, and receipt capture.",
-      strengths: [
-        "Low cost of ownership",
-        "Simple UI for basic accounting",
-        "Good fit for micro businesses",
-      ],
-    },
-    {
-      name: "Zoho Books",
-      logo: "https://cdn.worldvectorlogo.com/logos/zoho-1.svg",
-      fallbackIcon: "ZB",
-      color: "from-yellow-600 to-orange-600",
-      tag: "SMBs • Zoho Ecosystem",
-      description:
-        "Part of the Zoho suite. Ideal when you want CRM, billing, and accounting tightly integrated in one stack.",
-      strengths: [
-        "Deep integration with other Zoho apps",
-        "Good automation & workflow features",
-        "Strong value for money",
-      ],
-    },
-    {
-      name: "Sage Intacct",
-      logo: "https://cdn.worldvectorlogo.com/logos/sage-2.svg",
-      fallbackIcon: "SI",
-      color: "from-green-700 to-emerald-700",
-      tag: "US GAAP • Audit-Heavy",
-      description:
-        "AICPA-preferred system designed for strong internal controls, auditability, and complex reporting.",
-      strengths: [
-        "Built for strong audit trails",
-        "Powerful dimensional reporting",
-        "Great for nonprofits and multi-location entities",
-      ],
-    },
-     {
-      name: "Odoo Accounting",
-      logo: "https://cdn.worldvectorlogo.com/logos/odoo.svg",
-      fallbackIcon: "OD",
-      color: "from-purple-600 to-fuchsia-600",
-      tag: "SMBs • Modular ERP • Global",
-      description:
-        "Flexible, modular accounting as part of the Odoo ERP ecosystem. Ideal for growing businesses wanting customization.",
-      strengths: [
-        "Modular ERP with accounting at the core",
-        "Highly customizable workflows",
-        "Strong international adoption",
-      ],
-    },
-  ];
+ const softwares = [
+  {
+    name: "QuickBooks",
+    logo: "https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg",
+    fallbackIcon: "QB",
+    color: "from-green-700 to-emerald-700",
+    tag: "SMBs • CPAs • Global",
+    description:
+      "Cloud-based accounting for small and mid-sized businesses. Ideal for day-to-day bookkeeping, invoicing, and reconciliation.",
+    strengths: [
+      "Strong ecosystem of apps & integrations",
+      "Bank feeds and automated rules",
+      "Widely adopted by US and global CPAs",
+    ],
+  },
+  {
+    name: "Sage",
+    logo: "https://cdn.worldvectorlogo.com/logos/sage-2.svg",
+    fallbackIcon: "S",
+    color: "from-green-700 to-emerald-700",
+    tag: "Mid-Market • Advanced Reporting",
+    description:
+      "Enterprise-grade accounting with advanced reporting and multi-entity capabilities. Perfect for complex organizational structures.",
+    strengths: [
+      "Powerful multi-entity consolidation",
+      "Advanced financial reporting & analytics",
+      "Strong audit trails and compliance features",
+    ],
+  },
+  {
+    name: "Xero",
+    logo: "https://cdn.worldvectorlogo.com/logos/xero-1.svg",
+    fallbackIcon: "X",
+    color: "from-blue-500 to-blue-600",
+    tag: "Modern • Cloud-First",
+    description:
+      "Modern, cloud-native platform with beautiful UX. Perfect for distributed teams and businesses prioritizing user experience.",
+    strengths: [
+      "Excellent multi-currency support",
+      "Clean, intuitive interface",
+      "Powerful API for automation",
+    ],
+  },
+  {
+    name: "Wave",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Wave_Accounting_logo.svg",
+    fallbackIcon: "W",
+    color: "from-cyan-500 to-blue-500",
+    tag: "Freelancers • Micro Businesses",
+    description:
+      "Free accounting software for freelancers and very small businesses. Simple invoicing, expense tracking, and basic bookkeeping.",
+    strengths: [
+      "Completely free for core features",
+      "Simple UI for basic accounting",
+      "Great for solo entrepreneurs",
+    ],
+  },
+  {
+    name: "NetSuite",
+    logo: "https://cdn.worldvectorlogo.com/logos/netsuite-1.svg",
+    fallbackIcon: "NS",
+    color: "from-red-600 to-red-700",
+    tag: "Enterprise • ERP • Multi-Entity",
+    description:
+      "Comprehensive cloud ERP with advanced financials. Built for enterprise-scale operations with complex requirements.",
+    strengths: [
+      "Full ERP suite with financial management",
+      "Advanced multi-entity consolidation",
+      "Scalable for high-growth companies",
+    ],
+  },
+  {
+    name: "Zoho Books",
+    logo: "https://cdn.worldvectorlogo.com/logos/zoho-1.svg",
+    fallbackIcon: "ZB",
+    color: "from-yellow-600 to-orange-600",
+    tag: "SMBs • GST Ready • Scalable",
+    description:
+      "Cloud accounting with GST compliance and automation. Perfect for businesses in the Zoho ecosystem seeking integrated solutions.",
+    strengths: [
+      "GST-ready with automated compliance",
+      "Deep integration with Zoho suite",
+      "Strong automation & workflow features",
+    ],
+  },
+  {
+    name: "UltraTax",
+    logo: "https://cdn.worldvectorlogo.com/logos/thomson-reuters.svg",
+    fallbackIcon: "UT",
+    color: "from-blue-700 to-blue-800",
+    tag: "Tax Pros • Compliance",
+    description:
+      "Professional tax preparation software for accounting firms. Comprehensive compliance tools for complex tax scenarios.",
+    strengths: [
+      "Robust tax preparation workflows",
+      "Built-in compliance checks",
+      "Trusted by tax professionals",
+    ],
+  },
+  {
+    name: "TurboTax",
+    logo: "https://cdn.worldvectorlogo.com/logos/turbotax.svg",
+    fallbackIcon: "TT",
+    color: "from-red-500 to-red-600",
+    tag: "Individuals • DIY Filing",
+    description:
+      "User-friendly tax filing for individuals and small businesses. Step-by-step guidance with maximum refund guarantees.",
+    strengths: [
+      "Intuitive interview-style filing",
+      "Accurate calculations with audit support",
+      "Import from W-2s and previous returns",
+    ],
+  },
+  {
+    name: "ProConnect",
+    logo: "https://cdn.worldvectorlogo.com/logos/intuit.svg",
+    fallbackIcon: "PC",
+    color: "from-blue-600 to-blue-700",
+    tag: "CPAs • Tax Preparers",
+    description:
+      "Professional tax software for CPAs and accounting firms. Cloud-based with seamless QuickBooks integration.",
+    strengths: [
+      "Seamless Intuit ecosystem integration",
+      "Cloud-based for remote work",
+      "Built for professional tax preparers",
+    ],
+  },
+  {
+    name: "ADP Payroll",
+    logo: "https://cdn.worldvectorlogo.com/logos/adp-3.svg",
+    fallbackIcon: "ADP",
+    color: "from-red-600 to-red-700",
+    tag: "Enterprise • Compliance",
+    description:
+      "Enterprise payroll processing with full compliance management. Scalable solution for businesses of all sizes.",
+    strengths: [
+      "Comprehensive compliance & tax filing",
+      "Scalable for any business size",
+      "Full-service HR & benefits administration",
+    ],
+  },
+  {
+    name: "Gusto",
+    logo: "https://cdn.worldvectorlogo.com/logos/gusto-1.svg",
+    fallbackIcon: "G",
+    color: "from-orange-500 to-red-500",
+    tag: "SMBs • Modern HR",
+    description:
+      "Simple, modern payroll and HR platform for small businesses. Automated tax filing with employee self-service.",
+    strengths: [
+      "Beautiful, intuitive interface",
+      "Automated payroll & tax compliance",
+      "Integrated benefits & HR tools",
+    ],
+  },
+  {
+    name: "Paychex",
+    logo: "https://cdn.worldvectorlogo.com/logos/paychex.svg",
+    fallbackIcon: "PX",
+    color: "from-blue-600 to-indigo-600",
+    tag: "Full-Service • Workforce Solutions",
+    description:
+      "Complete payroll and workforce management with dedicated support. Full-service solution for growing businesses.",
+    strengths: [
+      "Full-service payroll with support",
+      "Comprehensive HR & benefits",
+      "Time tracking & workforce analytics",
+    ],
+  },
+];
 
   const handleImageError = (
     e: React.SyntheticEvent<HTMLImageElement>,
