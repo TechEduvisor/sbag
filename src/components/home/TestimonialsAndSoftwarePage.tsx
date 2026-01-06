@@ -1,5 +1,6 @@
-import { Quote, Sparkles, Star } from 'lucide-react';
-import { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect, useState } from 'react';
+import { Sparkles, Star } from 'lucide-react';
 
 interface Software {
   name: string;
@@ -9,42 +10,50 @@ interface Software {
 }
 
 export default function TestimonialsAndSoftwarePage() {
-  const clientTestimonials = [
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedSoftware, setSelectedSoftware] = useState<Software | null>(null);
+
+  const googleReviews = [
     {
-      name: 'John Miller',
-      company: 'CPA Firm, Texas',
-      quote: 'Their bookkeeping accuracy and turnaround time have transformed our financial management.',
+      name: 'Max Starkman',
+      rating: 5,
+      date: '2 weeks ago',
+      quote:
+        "I can't recommend the team enough. From their financial insight and expertise, to the highest degree of professionalism, the team is truly incredible.",
+      platform: 'Google',
     },
     {
-      name: 'Emily Carter',
-      company: 'E-Commerce CEO',
-      quote: 'Highly scalable, super responsive team. They helped us grow faster with reliable accounting support.',
-    },
-    {
-      name: 'Raj Mehra',
-      company: 'Real Estate Group',
-      quote: 'Professional and detail-focused team. Best outsourcing decision we made!',
+      name: 'Alan K',
+      rating: 5,
+      date: '3 weeks ago',
+      quote:
+        'SBAG is amazing. They are extremely efficient, communicate well and often, and produce clean, detailed financials. I would highly recommend this group.',
+      platform: 'Google',
     },
   ];
 
-  const googleReviews = [
+  const upworkReviews = [
     {
       name: 'Umendra Singh',
       rating: 5,
       date: '6 months ago',
-      quote: 'Excellent service and professional team. They handle all our accounting needs efficiently.',
-      platform: 'Google',
+      quote:
+        'Excellent service and professional team. They handle all our accounting needs efficiently.',
+      platform: 'Upwork',
     },
     {
       name: 'Sanam Shaikh',
       rating: 5,
       date: '29 Apr 2023',
-      quote: 'Outstanding experience working with SBG & Co. Their attention to detail and expertise in accounting is remarkable.',
-      platform: 'Google',
+      quote:
+        'Outstanding experience working with SBG & Co. Their attention to detail and expertise in accounting is remarkable.',
+      platform: 'Upwork',
     },
   ];
 
-  const softwares = [
+  const allReviews = [...googleReviews, ...upworkReviews];
+
+  const softwares: Software[] = [
     {
       name: 'QuickBooks',
       fallbackIcon: 'QB',
@@ -67,7 +76,7 @@ export default function TestimonialsAndSoftwarePage() {
       name: 'Wave',
       fallbackIcon: 'W',
       color: 'from-cyan-500 to-blue-500',
-      logo: 'https://cdn.worldvectorlogo.com/logos/wave-1.svg',
+      logo: '/image.png',
     },
     {
       name: 'NetSuite',
@@ -83,31 +92,31 @@ export default function TestimonialsAndSoftwarePage() {
     },
     {
       name: 'UltraTax',
-      logo: 'https://cdn.worldvectorlogo.com/logos/thomson-reuters.svg',
+      logo: '/imagecopy.png',
       fallbackIcon: 'UT',
       color: 'from-blue-700 to-blue-800',
     },
     {
       name: 'TurboTax',
-      logo: 'https://cdn.worldvectorlogo.com/logos/turbotax.svg',
+      logo: '/image1copy.png',
       fallbackIcon: 'TT',
       color: 'from-red-500 to-red-600',
     },
     {
       name: 'ProConnect',
-      logo: 'https://cdn.worldvectorlogo.com/logos/intuit.svg',
+      logo: '/image5copy.png',
       fallbackIcon: 'PC',
       color: 'from-blue-600 to-blue-700',
     },
     {
       name: 'ADP Payroll',
-      logo: 'https://cdn.worldvectorlogo.com/logos/adp-3.svg',
+      logo: '/image3copy.png',
       fallbackIcon: 'ADP',
       color: 'from-red-600 to-red-700',
     },
     {
       name: 'Gusto',
-      logo: 'https://cdn.worldvectorlogo.com/logos/gusto-1.svg',
+      logo: '/image4opy.png',
       fallbackIcon: 'G',
       color: 'from-orange-500 to-red-500',
     },
@@ -119,15 +128,19 @@ export default function TestimonialsAndSoftwarePage() {
     },
   ];
 
-  const [selectedSoftware, setSelectedSoftware] = useState<Software | null>(null);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % allReviews.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [allReviews.length]);
 
   const handleImageError = (
     e: React.SyntheticEvent<HTMLImageElement>,
     fallbackIcon: string,
     color: string
   ) => {
-    const target = e.currentTarget;
-    const parent = target.parentElement;
+    const parent = e.currentTarget.parentElement;
     if (parent) {
       parent.innerHTML = `
         <div class="w-full h-full flex items-center justify-center bg-gradient-to-br ${color} rounded-2xl">
@@ -137,9 +150,11 @@ export default function TestimonialsAndSoftwarePage() {
     }
   };
 
+  const currentReview = allReviews[currentIndex];
+
   return (
     <div className="min-h-screen mt-10 bg-secondary text-white py-12 relative overflow-hidden">
-      {/* Soft background accents */}
+      {/* Background */}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-32 -left-20 w-80 h-80 bg-primary/30 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-accent/25 rounded-full blur-3xl" />
@@ -155,7 +170,7 @@ export default function TestimonialsAndSoftwarePage() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-6">
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="text-sm font-semibold tracking-wide text-white/80 uppercase">
@@ -166,119 +181,51 @@ export default function TestimonialsAndSoftwarePage() {
             What Our <span className="text-accent">Clients Say</span>
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto text-lg">
-            Real feedback from businesses who rely on us for accurate, scalable, and compliant
-            accounting support.
+            Real feedback from businesses who rely on us for accurate, scalable,
+            and compliant accounting support.
           </p>
         </div>
 
-        {/* Google Reviews Section */}
-        <div className="mb-10">
-          {/* <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 mb-6">
-              <img
-                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-                alt="Google"
-                className="h-7"
-              />
-              <div className="text-left border-l border-white/30 pl-4">
-                <div className="flex items-center gap-2">
-                  <span className="text-3xl font-bold">4.3</span>
-                  <div className="flex gap-0.5">
-                    {[...Array(4)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                    <Star className="w-5 h-5 fill-gray-400 text-gray-400" />
-                  </div>
-                </div>
-                <p className="text-white/60 text-sm">Based on 3 reviews</p>
-              </div>
-            </div>
-          </div> */}
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-8">
-            {googleReviews.map((review, i) => (
-              <div
-                key={i}
-                className="relative bg-gradient-to-br from-white/12 to-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/20 hover:border-accent/50 transition-all hover:scale-105 hover:shadow-2xl"
-              >
-                {/* <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl">
-                  <img
-                    src="https://www.google.com/favicon.ico"
-                    alt="Google"
-                    className="w-8 h-8"
+        {/* Review Card */}
+        <div className="mb-16 max-w-3xl mx-auto">
+          <div className="bg-gradient-to-br from-white/12 to-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/20">
+            <h3 className="text-2xl font-bold mb-2">{currentReview.name}</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="flex gap-1">
+                {[...Array(currentReview.rating)].map((_, idx) => (
+                  <Star
+                    key={idx}
+                    className="w-5 h-5 fill-yellow-400 text-yellow-400"
                   />
-                </div> */}
-
-                <div className="mb-4">
-                  <h3 className="text-xl font-bold text-white mb-1">{review.name}</h3>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="flex gap-1">
-                      {[...Array(review.rating)].map((_, idx) => (
-                        <Star key={idx} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <span className="text-white/50 text-sm">{review.date}</span>
-                  </div>
-                </div>
-
-                <p className="text-white/90 text-base leading-relaxed italic">
-                  "{review.quote}"
-                </p>
-
-                <div className="mt-6 pt-4 border-t border-white/10">
-                  <span className="text-accent text-sm font-semibold">Verified Google Review</span>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
+              <span className="text-white/50 text-sm">{currentReview.date}</span>
+            </div>
 
-          <div className="text-center">
-            <a
-              href="https://www.google.com/search?q=sbag+%26co+review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-accent hover:text-white transition-all hover:scale-105 shadow-lg"
-            >
-              <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5" />
-              View All Google Reviews
-            </a>
-          </div>
-        </div>
+            <p className="text-white/90 text-lg italic min-h-[120px]">
+              "{currentReview.quote}"
+            </p>
 
-        {/* Client Testimonials Section */}
-        <div className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">
-              Client <span className="text-accent">Testimonials</span>
-            </h2>
-          </div>
+            <div className="mt-6 pt-4 border-t border-white/10">
+              <span className="text-accent text-sm font-semibold">
+                Verified {currentReview.platform} Review
+              </span>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-            {clientTestimonials.map((t, i) => (
-              <div
-                key={i}
-                className="relative bg-white/8 backdrop-blur-md p-8 rounded-2xl border border-white/15 hover:bg-white/14 transition-all group hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/20"
-              >
-                <div className="absolute -top-5 left-6 w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center shadow-lg shadow-black/40">
-                  <Quote className="w-5 h-5 text-white" />
-                </div>
-
-                <p className="text-white/90 italic mb-6 text-lg leading-relaxed">
-                  "{t.quote}"
-                </p>
-                <div className="flex items-center justify-between mt-6">
-                  <div>
-                    <div className="font-semibold text-accent text-lg">{t.name}</div>
-                    <div className="text-white/60 text-sm">{t.company}</div>
-                  </div>
-                  <div className="flex gap-1 text-yellow-300">
-                    {[...Array(5)].map((_, idx) => (
-                      <Star key={idx} className="w-4 h-4 fill-yellow-300 text-yellow-300" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+            {/* Dots */}
+            <div className="flex justify-center gap-2 mt-6">
+              {allReviews.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`h-2 rounded-full transition-all ${
+                    idx === currentIndex
+                      ? 'bg-accent w-8'
+                      : 'bg-white/30 hover:bg-white/50 w-2'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -288,8 +235,8 @@ export default function TestimonialsAndSoftwarePage() {
             Accounting Software <span className="text-accent">We Use</span>
           </h2>
           <p className="text-white/75 max-w-2xl mx-auto text-lg">
-            We work on leading global accounting platforms so you don't have to worry about tools,
-            versions, or compliance.
+            We work on leading global accounting platforms so you don't have to
+            worry about tools, versions, or compliance.
           </p>
         </div>
 
@@ -298,19 +245,22 @@ export default function TestimonialsAndSoftwarePage() {
             <button
               key={i}
               onClick={() => setSelectedSoftware(s)}
-              className="relative bg-white/8 p-6 md:p-8 rounded-xl border border-white/15 backdrop-blur-md flex flex-col items-center text-center hover:bg-white/14 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30 cursor-pointer group"
+              className="bg-white/8 p-6 rounded-xl border border-white/15 backdrop-blur-md hover:bg-white/14 hover:-translate-y-1 transition-all"
             >
-              <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center mb-4 shadow-lg shadow-black/30 p-3 group-hover:scale-105 transition-transform overflow-hidden">
+              <div className="w-20 h-20 bg-white rounded-2xl mx-auto mb-4 p-3">
                 <img
                   src={s.logo}
-                  alt={`${s.name} logo`}
+                  alt={s.name}
                   className="w-full h-full object-contain"
-                  onError={(e) => handleImageError(e, s.fallbackIcon, s.color)}
-                  crossOrigin="anonymous"
+                  onError={(e) =>
+                    handleImageError(e, s.fallbackIcon, s.color)
+                  }
                 />
               </div>
-              <p className="text-lg font-semibold mb-1">{s.name}</p>
-              <p className="text-xs text-white/60">Cloud-ready • Scalable • Secure</p>
+              <p className="font-semibold">{s.name}</p>
+              <p className="text-xs text-white/60">
+                Cloud-ready • Scalable • Secure
+              </p>
             </button>
           ))}
         </div>
@@ -320,9 +270,10 @@ export default function TestimonialsAndSoftwarePage() {
         </div>
       </div>
 
+      {/* SOFTWARE MODAL (RESTORED) */}
       {selectedSoftware && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-gray-900 text-white rounded-2xl w-[90%] max-w-md p-8 relative shadow-2xl border border-white/15">
+          <div className="bg-secondary text-white rounded-2xl w-[90%] max-w-md p-8 relative shadow-2xl border border-white/15">
             <button
               onClick={() => setSelectedSoftware(null)}
               className="absolute top-4 right-4 text-white/70 hover:text-white text-xl"
@@ -338,7 +289,9 @@ export default function TestimonialsAndSoftwarePage() {
               />
             </div>
 
-            <h3 className="text-2xl font-bold text-center mb-3">{selectedSoftware.name}</h3>
+            <h3 className="text-2xl font-bold text-center mb-3">
+              {selectedSoftware.name}
+            </h3>
 
             <p className="text-white/70 text-center mb-6">
               Trusted cloud accounting platform we actively work with.
@@ -346,7 +299,7 @@ export default function TestimonialsAndSoftwarePage() {
 
             <button
               onClick={() => setSelectedSoftware(null)}
-              className="block w-full bg-blue-600 text-center text-white hover:bg-blue-500 font-semibold py-3 rounded-xl transition"
+              className="block w-full bg-accent text-white font-semibold py-3 rounded-xl hover:opacity-90 transition"
             >
               Close
             </button>
