@@ -1,6 +1,3 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -29,44 +26,61 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              
-              {/* Individual Service Routes */}
-              <Route path="/services/bookkeeping" element={<BookkeepingService />} />
-              <Route path="/services/payroll" element={<PayrollService />} />
-              <Route path="/services/taxation" element={<TaxationService />} />
-              <Route path="/services/auditing" element={<AuditingService />} />
-              <Route path="/services/financial-statements" element={<FinancialStatementsService />} />
-              <Route path="/industries/:slug" element={<IndustryDetailRouter />} />
+    <BrowserRouter>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
 
-              <Route path="/industries" element={<Industries />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/careers" element={<Careers />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/services/financial-reporting" element={<FinancialReportingService />} />
-<Route path="/services/virtual-cfo" element={<VirtualCFOService />} />
-<Route path="/services/financial-modeling" element={<FinancialModelingService />} />
-<Route path="/software-stack" element={<AccountingSoftwareDetailsPage />} />
+            {/* Individual Service Routes */}
+            <Route
+              path="/services/bookkeeping"
+              element={<BookkeepingService />}
+            />
+            <Route path="/services/payroll" element={<PayrollService />} />
+            <Route path="/services/taxation" element={<TaxationService />} />
+            <Route path="/services/auditing" element={<AuditingService />} />
+            <Route
+              path="/services/financial-statements"
+              element={<FinancialStatementsService />}
+            />
+            <Route
+              path="/industries/:slug"
+              element={<IndustryDetailRouter />}
+            />
 
-              {/* Catch-all route */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-          <ScrollToTop />
-        </div>
-      </BrowserRouter>
-    </TooltipProvider>
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/services/financial-reporting"
+              element={<FinancialReportingService />}
+            />
+            <Route
+              path="/services/virtual-cfo"
+              element={<VirtualCFOService />}
+            />
+            <Route
+              path="/services/financial-modeling"
+              element={<FinancialModelingService />}
+            />
+            <Route
+              path="/software-stack"
+              element={<AccountingSoftwareDetailsPage />}
+            />
+
+            {/* Catch-all route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 

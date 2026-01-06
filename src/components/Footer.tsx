@@ -80,13 +80,13 @@ const Footer = () => {
     />
   </a>
   <a
-    href="https://www.instagram.com/your_username_here" 
+    href="https://www.instagram.com/sbagllp/" 
     target="_blank"
     rel="noopener noreferrer"
     className="w-10 h-10 bg-white rounded-lg flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
   >
     <img
-      src="https://img.icons8.com/color/48/instagram-new.png"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKLBenCOp313r8BRIkKyQOATrSLe9bksJXw&s"
       alt="Instagram"
       className="w-6 h-6"
     />

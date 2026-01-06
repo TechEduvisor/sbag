@@ -315,9 +315,11 @@ const EnhancedContact = () => {
                   rel="noopener noreferrer"
                   className="p-5 bg-card rounded-2xl border hover:shadow-lg transition flex items-center gap-4"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center">
-                    <Linkedin className="text-white" />
-                  </div>
+                  <img
+                    src="https://img.freepik.com/premium-vector/vector-linkedin-apps-logo-rounded-asset-isolated_1004619-457.jpg?semt=ais_hybrid&w=740&q=80"
+                    alt="LinkedIn"
+                    className="w-10 h-10  rounded-lg "
+                  />
                   <div>
                     <p className="font-semibold">LinkedIn</p>
                     <p className="text-gray-600 text-sm">
@@ -332,10 +334,13 @@ const EnhancedContact = () => {
                   rel="noopener noreferrer"
                   className="p-5 bg-card rounded-2xl border hover:shadow-lg transition flex items-center gap-4"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center">
-                    <Globe className="text-white" />
-                  </div>
+                  <img
+                    src="https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png"
+                    alt="Facebook"
+                    className="w-10 h-10  rounded-lg "
+                  />
                   <div>
+                    {" "}
                     <p className="font-semibold">Facebook</p>
                     <p className="text-gray-600 text-sm">Community & updates</p>
                   </div>
@@ -347,9 +352,11 @@ const EnhancedContact = () => {
                   rel="noopener noreferrer"
                   className="p-5 bg-card rounded-2xl border hover:shadow-lg transition flex items-center gap-4"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 via-rose-500 to-orange-500 flex items-center justify-center">
-                    <MessageSquare className="text-white" />
-                  </div>
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwKLBenCOp313r8BRIkKyQOATrSLe9bksJXw&s"
+                    alt="Instagram"
+                    className="w-10 h-10  rounded-lg "
+                  />
                   <div>
                     <p className="font-semibold">Instagram</p>
                     <p className="text-gray-600 text-sm">@sbagllp</p>

@@ -439,15 +439,15 @@ When not balancing books, heâ€™s watching Marvel movies, convinced Thanos couldâ
           <img
             src="/photo1.png"
             alt="Sudhanshu Bansal"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-fit"
           />
         </div>
 
         <div className="flex-1">
-          <h3 className="text-3xl font-bold text-gray-900 mb-1">
+          <h3 className="text-3xl flex justify-end font-bold text-gray-900 mb-1">
             Sudhanshu Bansal
           </h3>
-          <p className="text-primary font-semibold mb-4">
+          <p className="text-primary flex justify-end  font-semibold mb-4">
             Co-Founder & Partner
           </p>
 
@@ -455,7 +455,7 @@ When not balancing books, heâ€™s watching Marvel movies, convinced Thanos couldâ
             {expandedFounder === 'sudhanshu' ? sudhanshuFull : sudhanshuShort}
           </p>
 
-          <div className="mt-4 flex items-center gap-4">
+          <div className="mt-4  w-full flex justify-end  items-center gap-4">
             <button
               onClick={() =>
                 setExpandedFounder(

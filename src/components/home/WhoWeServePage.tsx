@@ -10,7 +10,7 @@ export default function WhoWeServePage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen pt-20 bg-gradient-to-br from-secondary via-forest-green to-dark-olive text-white py-20 relative overflow-hidden">
+    <div className="min-h-screen pt-20 bg-gradient-to-br from-secondary via-forest-green to-dark-olive text-white relative overflow-hidden">
       {/* Background accents */}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-24 -left-24 w-72 h-72 bg-primary/30 rounded-full blur-3xl" />

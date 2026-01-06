@@ -52,7 +52,7 @@ export default function AccountingSoftwareDetailsPage() {
   },
   {
     name: "Wave",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Wave_Accounting_logo.svg",
+    logo: '/image.png',
     fallbackIcon: "W",
     color: "from-cyan-500 to-blue-500",
     tag: "Freelancers • Micro Businesses",
@@ -94,8 +94,8 @@ export default function AccountingSoftwareDetailsPage() {
   },
   {
     name: "UltraTax",
-    logo: "https://cdn.worldvectorlogo.com/logos/thomson-reuters.svg",
-    fallbackIcon: "UT",
+    logo: '/imagecopy.png',
+      fallbackIcon: "UT",
     color: "from-blue-700 to-blue-800",
     tag: "Tax Pros • Compliance",
     description:
@@ -108,8 +108,8 @@ export default function AccountingSoftwareDetailsPage() {
   },
   {
     name: "TurboTax",
-    logo: "https://cdn.worldvectorlogo.com/logos/turbotax.svg",
-    fallbackIcon: "TT",
+     logo: '/image1copy.png',
+     fallbackIcon: "TT",
     color: "from-red-500 to-red-600",
     tag: "Individuals • DIY Filing",
     description:
@@ -136,8 +136,8 @@ export default function AccountingSoftwareDetailsPage() {
   },
   {
     name: "ADP Payroll",
-    logo: "https://cdn.worldvectorlogo.com/logos/adp-3.svg",
-    fallbackIcon: "ADP",
+   logo: '/image3copy.png',
+      fallbackIcon: "ADP",
     color: "from-red-600 to-red-700",
     tag: "Enterprise • Compliance",
     description:
@@ -150,8 +150,8 @@ export default function AccountingSoftwareDetailsPage() {
   },
   {
     name: "Gusto",
-    logo: "https://cdn.worldvectorlogo.com/logos/gusto-1.svg",
-    fallbackIcon: "G",
+    logo: '/image4opy.png',
+      fallbackIcon: "G",
     color: "from-orange-500 to-red-500",
     tag: "SMBs • Modern HR",
     description:
