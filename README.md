@@ -1,5 +1,5 @@
 📘 S B A G & Co. LLP – Website README
-🏢 Overview.
+🏢 Overview
 
 This project is the official website for S B A G & Co. LLP, a professional firm specializing in:
 
