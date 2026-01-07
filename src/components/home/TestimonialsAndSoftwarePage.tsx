@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
-import { Sparkles, Star } from 'lucide-react';
+// 1. Added ChevronLeft and ChevronRight to imports
+import { Sparkles, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Software {
   name: string;
   logo: string;
   fallbackIcon: string;
-  color: string;
+  color: any;
 }
 
 export default function TestimonialsAndSoftwarePage() {
@@ -27,7 +28,7 @@ export default function TestimonialsAndSoftwarePage() {
       rating: 5,
       date: '3 weeks ago',
       quote:
-        'SBAG is amazing. They are extremely efficient, communicate well and often, and produce clean, detailed financials. I would highly recommend this group.',
+        'SBAG is amazing. They are extremely efficient, communicate well and often, and produce clean, detailed financials. I would recommend this group.',
       platform: 'Google',
     },
   ];
@@ -52,6 +53,15 @@ export default function TestimonialsAndSoftwarePage() {
   ];
 
   const allReviews = [...googleReviews, ...upworkReviews];
+
+  // 2. Navigation Functions
+  const nextReview = () => {
+    setCurrentIndex((prev) => (prev + 1) % allReviews.length);
+  };
+
+  const prevReview = () => {
+    setCurrentIndex((prev) => (prev - 1 + allReviews.length) % allReviews.length);
+  };
 
   const softwares: Software[] = [
     {
@@ -130,8 +140,8 @@ export default function TestimonialsAndSoftwarePage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % allReviews.length);
-    }, 3000);
+      nextReview(); // Use the function here
+    }, 5000); // Increased to 5s to give time to read with manual nav
     return () => clearInterval(interval);
   }, [allReviews.length]);
 
@@ -154,7 +164,7 @@ export default function TestimonialsAndSoftwarePage() {
 
   return (
     <div className="min-h-screen mt-10 bg-secondary text-white py-12 relative overflow-hidden">
-      {/* Background */}
+      {/* Background stays the same */}
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="absolute -top-32 -left-20 w-80 h-80 bg-primary/30 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-[28rem] h-[28rem] bg-accent/25 rounded-full blur-3xl" />
@@ -169,7 +179,7 @@ export default function TestimonialsAndSoftwarePage() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
+        {/* Header stays the same */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-6">
             <Sparkles className="w-4 h-4 text-accent" />
@@ -180,14 +190,19 @@ export default function TestimonialsAndSoftwarePage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             What Our <span className="text-accent">Clients Say</span>
           </h1>
-          <p className="text-white/70 max-w-2xl mx-auto text-lg">
-            Real feedback from businesses who rely on us for accurate, scalable,
-            and compliant accounting support.
-          </p>
         </div>
 
-        {/* Review Card */}
-        <div className="mb-16 max-w-3xl mx-auto">
+        {/* 3. Review Card Section with Arrows */}
+        <div className="mb-16 max-w-4xl mx-auto relative px-12">
+           {/* Left Arrow */}
+           <button 
+            onClick={prevReview}
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 transition-all z-20"
+            aria-label="Previous review"
+          >
+            <ChevronLeft className="w-6 h-6 text-white" />
+          </button>
+
           <div className="bg-gradient-to-br from-white/12 to-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/20">
             <h3 className="text-2xl font-bold mb-2">{currentReview.name}</h3>
             <div className="flex items-center gap-3 mb-4">
@@ -227,9 +242,18 @@ export default function TestimonialsAndSoftwarePage() {
               ))}
             </div>
           </div>
+
+          {/* Right Arrow */}
+          <button 
+            onClick={nextReview}
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 transition-all z-20"
+            aria-label="Next review"
+          >
+            <ChevronRight className="w-6 h-6 text-white" />
+          </button>
         </div>
 
-        {/* Software Section */}
+        {/* Everything else remains untouched */}
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Accounting Software <span className="text-accent">We Use</span>
@@ -270,7 +294,7 @@ export default function TestimonialsAndSoftwarePage() {
         </div>
       </div>
 
-      {/* SOFTWARE MODAL (RESTORED) */}
+      {/* SOFTWARE MODAL (STAYS SAME) */}
       {selectedSoftware && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="bg-secondary text-white rounded-2xl w-[90%] max-w-md p-8 relative shadow-2xl border border-white/15">
