@@ -418,7 +418,7 @@ When not balancing books, heâ€™s watching Marvel movies, convinced Thanos couldâ
             </button>
 
             <a
-              href="https://www.linkedin.com/in/casudhanshubansal/"
+             href="https://www.linkedin.com/in/ca-ankit-gupta-918a4075/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:scale-110 transition"
@@ -468,7 +468,7 @@ When not balancing books, heâ€™s watching Marvel movies, convinced Thanos couldâ
             </button>
 
             
-            <a  href="https://www.linkedin.com/in/ca-ankit-gupta-918a4075/"
+            <a  href="https://www.linkedin.com/in/casudhanshubansal/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:scale-110 transition"
