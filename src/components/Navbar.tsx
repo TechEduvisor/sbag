@@ -17,7 +17,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -242,7 +242,6 @@ const Navbar = () => {
             {[
               { code: "us", label: "USA" },
               { code: "gb", label: "UK" },
-              // { code: "in", label: "India" },
               { code: "ca", label: "Canada" },
               { code: "au", label: "Australia" },
             ].map((c, index) => (

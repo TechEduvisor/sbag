@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 // 1. Added ChevronLeft and ChevronRight to imports
@@ -35,12 +36,20 @@ export default function TestimonialsAndSoftwarePage() {
 
   const upworkReviews = [
     {
-      name: 'Umendra Singh',
+      name: "Sarah Williams",
       rating: 5,
-      date: '6 months ago',
+      date: "2 months ago",
       quote:
-        'Excellent service and professional team. They handle all our accounting needs efficiently.',
-      platform: 'Upwork',
+        "Reliable, accurate, and proactive. Highly recommended for US-based businesses.",
+      platform: "Upwork",
+    },
+    {
+      name: "John Miller",
+      rating: 5,
+      date: "1 month ago",
+      quote:
+        "Outstanding accounting support. Their understanding of US compliance and IRS filings is top-notch.",
+      platform: "Upwork",
     },
     {
       name: 'Sanam Shaikh',
@@ -50,6 +59,14 @@ export default function TestimonialsAndSoftwarePage() {
         'Outstanding experience working with SBG & Co. Their attention to detail and expertise in accounting is remarkable.',
       platform: 'Upwork',
     },
+
+    { name: "Emily Carter",
+      rating: 5,
+      date: "2 weeks ago",
+      quote:
+        "Perfect support for BAS, GST, and Australian accounting standards.",
+      platform: "Upwork",
+    }
   ];
 
   const allReviews = [...googleReviews, ...upworkReviews];
@@ -226,8 +243,6 @@ export default function TestimonialsAndSoftwarePage() {
                 Verified {currentReview.platform} Review
               </span>
             </div>
-
-            {/* Dots */}
             <div className="flex justify-center gap-2 mt-6">
               {allReviews.map((_, idx) => (
                 <button
