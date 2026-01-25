@@ -1,8 +1,31 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
-// 1. Added ChevronLeft and ChevronRight to imports
-import { Sparkles, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Sparkles, Star, ChevronLeft, ChevronRight, Search, Briefcase } from 'lucide-react';
+
+const slideStyles = `
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .slide-animation {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+`;
+
+// Inject styles
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = slideStyles;
+  document.head.appendChild(styleSheet);
+}
 
 interface Software {
   name: string;
@@ -14,6 +37,7 @@ interface Software {
 export default function TestimonialsAndSoftwarePage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedSoftware, setSelectedSoftware] = useState<Software | null>(null);
+  const [animate, setAnimate] = useState(true);
 
   const googleReviews = [
     {
@@ -52,15 +76,7 @@ export default function TestimonialsAndSoftwarePage() {
       platform: "Upwork",
     },
     {
-      name: 'Sanam Shaikh',
-      rating: 5,
-      date: '29 Apr 2023',
-      quote:
-        'Outstanding experience working with SBG & Co. Their attention to detail and expertise in accounting is remarkable.',
-      platform: 'Upwork',
-    },
-
-    { name: "Emily Carter",
+      name: "Emily Carter",
       rating: 5,
       date: "2 weeks ago",
       quote:
@@ -71,13 +87,20 @@ export default function TestimonialsAndSoftwarePage() {
 
   const allReviews = [...googleReviews, ...upworkReviews];
 
-  // 2. Navigation Functions
   const nextReview = () => {
-    setCurrentIndex((prev) => (prev + 1) % allReviews.length);
+    setAnimate(false);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % allReviews.length);
+      setAnimate(true);
+    }, 300);
   };
 
   const prevReview = () => {
-    setCurrentIndex((prev) => (prev - 1 + allReviews.length) % allReviews.length);
+    setAnimate(false);
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev - 1 + allReviews.length) % allReviews.length);
+      setAnimate(true);
+    }, 300);
   };
 
   const softwares: Software[] = [
@@ -157,8 +180,8 @@ export default function TestimonialsAndSoftwarePage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      nextReview(); // Use the function here
-    }, 5000); // Increased to 5s to give time to read with manual nav
+      nextReview();
+    }, 5000);
     return () => clearInterval(interval);
   }, [allReviews.length]);
 
@@ -178,6 +201,13 @@ export default function TestimonialsAndSoftwarePage() {
   };
 
   const currentReview = allReviews[currentIndex];
+  
+  const getPlatformIcon = () => {
+    if (currentReview.platform === 'Google') {
+      return <Search className="w-4 h-4 text-blue-600" />;
+    }
+    return <Briefcase className="w-4 h-4 text-green-700" />;
+  };
 
   return (
     <div className="min-h-screen mt-10 bg-secondary text-white py-12 relative overflow-hidden">
@@ -196,7 +226,7 @@ export default function TestimonialsAndSoftwarePage() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Header stays the same */}
+        {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 mb-6">
             <Sparkles className="w-4 h-4 text-accent" />
@@ -209,49 +239,64 @@ export default function TestimonialsAndSoftwarePage() {
           </h1>
         </div>
 
-        {/* 3. Review Card Section with Arrows */}
+        {/* Review Card Section with Arrows */}
         <div className="mb-16 max-w-4xl mx-auto relative px-12">
-           {/* Left Arrow */}
-           <button 
+          {/* Left Arrow */}
+          <button 
             onClick={prevReview}
-            className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 transition-all z-20"
+            className="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white border border-white/10 hover:bg-white/20 transition-all z-20"
             aria-label="Previous review"
           >
-            <ChevronLeft className="w-6 h-6 text-white" />
+            <ChevronLeft className="w-6 h-6 text-secondary" />
           </button>
 
-          <div className="bg-gradient-to-br from-white/12 to-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/20">
-            <h3 className="text-2xl font-bold mb-2">{currentReview.name}</h3>
+          {/* White Card with Black Text and Green Accents */}
+          <div className={`bg-white p-8 rounded-3xl border border-gray-200 shadow-lg ${animate ? 'slide-animation' : ''}`}>
+            {/* Platform Badge - Compact */}
+            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-green-100 rounded-full">
+              {getPlatformIcon()}
+              <span className="text-xs font-semibold text-green-700 uppercase">
+                {currentReview.platform} Review
+              </span>
+            </div>
+
+            {/* Name */}
+            <h3 className="text-2xl font-bold text-black mb-2">{currentReview.name}</h3>
+
+            {/* Rating and Date */}
             <div className="flex items-center gap-3 mb-4">
               <div className="flex gap-1">
                 {[...Array(currentReview.rating)].map((_, idx) => (
                   <Star
                     key={idx}
-                    className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                    className="w-4 h-4 fill-green-500 text-green-500"
                   />
                 ))}
               </div>
-              <span className="text-white/50 text-sm">{currentReview.date}</span>
+              <span className="text-gray-500 text-sm">{currentReview.date}</span>
             </div>
 
-            <p className="text-white/90 text-lg italic min-h-[120px]">
+            {/* Quote */}
+            <p className="text-gray-800 text-base italic min-h-[100px] leading-relaxed">
               "{currentReview.quote}"
             </p>
 
-            <div className="mt-6 pt-4 border-t border-white/10">
-              <span className="text-accent text-sm font-semibold">
-                Verified {currentReview.platform} Review
-              </span>
-            </div>
+            {/* Dots Navigation */}
             <div className="flex justify-center gap-2 mt-6">
               {allReviews.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrentIndex(idx)}
+                  onClick={() => {
+                    setAnimate(false);
+                    setTimeout(() => {
+                      setCurrentIndex(idx);
+                      setAnimate(true);
+                    }, 300);
+                  }}
                   className={`h-2 rounded-full transition-all ${
                     idx === currentIndex
-                      ? 'bg-accent w-8'
-                      : 'bg-white/30 hover:bg-white/50 w-2'
+                      ? 'bg-green-500 w-8'
+                      : 'bg-gray-300 hover:bg-gray-400 w-2'
                   }`}
                 />
               ))}
@@ -261,14 +306,14 @@ export default function TestimonialsAndSoftwarePage() {
           {/* Right Arrow */}
           <button 
             onClick={nextReview}
-            className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/20 transition-all z-20"
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white border border-white/10 hover:bg-white/20 transition-all z-20"
             aria-label="Next review"
           >
-            <ChevronRight className="w-6 h-6 text-white" />
+            <ChevronRight className="w-6 h-6 text-secondary" />
           </button>
         </div>
 
-        {/* Everything else remains untouched */}
+        {/* Software Section */}
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Accounting Software <span className="text-accent">We Use</span>
@@ -309,7 +354,7 @@ export default function TestimonialsAndSoftwarePage() {
         </div>
       </div>
 
-      {/* SOFTWARE MODAL (STAYS SAME) */}
+      {/* SOFTWARE MODAL */}
       {selectedSoftware && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div className="bg-secondary text-white rounded-2xl w-[90%] max-w-md p-8 relative shadow-2xl border border-white/15">
