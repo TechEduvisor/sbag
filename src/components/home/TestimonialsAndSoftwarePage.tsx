@@ -32,6 +32,7 @@ interface Software {
   logo: string;
   fallbackIcon: string;
   color: any;
+  description?: string;
 }
 
 export default function TestimonialsAndSoftwarePage() {
@@ -103,80 +104,93 @@ export default function TestimonialsAndSoftwarePage() {
     }, 300);
   };
 
-  const softwares: Software[] = [
-    {
-      name: 'QuickBooks',
-      fallbackIcon: 'QB',
-      color: 'from-green-700 to-emerald-700',
-      logo: 'https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg',
-    },
-    {
-      name: 'Sage',
-      fallbackIcon: 'S',
-      color: 'from-green-700 to-emerald-700',
-      logo: 'https://cdn.worldvectorlogo.com/logos/sage-2.svg',
-    },
-    {
-      name: 'Xero',
-      fallbackIcon: 'X',
-      color: 'from-blue-500 to-blue-600',
-      logo: 'https://cdn.worldvectorlogo.com/logos/xero-1.svg',
-    },
-    {
-      name: 'Wave',
-      fallbackIcon: 'W',
-      color: 'from-cyan-500 to-blue-500',
-      logo: '/image.png',
-    },
-    {
-      name: 'NetSuite',
-      logo: 'https://cdn.worldvectorlogo.com/logos/netsuite-1.svg',
-      fallbackIcon: 'NS',
-      color: 'from-red-600 to-red-700',
-    },
-    {
-      name: 'Zoho Books',
-      logo: 'https://cdn.worldvectorlogo.com/logos/zoho-1.svg',
-      fallbackIcon: 'ZB',
-      color: 'from-yellow-600 to-orange-600',
-    },
-    {
-      name: 'UltraTax',
-      logo: '/imagecopy.png',
-      fallbackIcon: 'UT',
-      color: 'from-blue-700 to-blue-800',
-    },
-    {
-      name: 'TurboTax',
-      logo: '/image1copy.png',
-      fallbackIcon: 'TT',
-      color: 'from-red-500 to-red-600',
-    },
-    {
-      name: 'ProConnect',
-      logo: '/image5copy.png',
-      fallbackIcon: 'PC',
-      color: 'from-blue-600 to-blue-700',
-    },
-    {
-      name: 'ADP Payroll',
-      logo: '/image3copy.png',
-      fallbackIcon: 'ADP',
-      color: 'from-red-600 to-red-700',
-    },
-    {
-      name: 'Gusto',
-      logo: '/image4opy.png',
-      fallbackIcon: 'G',
-      color: 'from-orange-500 to-red-500',
-    },
-    {
-      name: 'Paychex',
-      logo: 'https://cdn.worldvectorlogo.com/logos/paychex.svg',
-      fallbackIcon: 'PX',
-      color: 'from-blue-600 to-indigo-600',
-    },
-  ];
+ const softwares: Software[] = [
+  {
+    name: 'QuickBooks',
+    fallbackIcon: 'QB',
+    color: 'from-green-700 to-emerald-700',
+    logo: 'https://cdn.worldvectorlogo.com/logos/quickbooks-1.svg',
+    description: 'Ideal for small and mid-sized businesses',
+  },
+  {
+    name: 'Sage',
+    fallbackIcon: 'S',
+    color: 'from-green-700 to-emerald-700',
+    logo: 'https://cdn.worldvectorlogo.com/logos/sage-2.svg',
+    description: 'Advanced reporting and multi-entity accounting',
+  },
+  {
+    name: 'Xero',
+    fallbackIcon: 'X',
+    color: 'from-blue-500 to-blue-600',
+    logo: 'https://cdn.worldvectorlogo.com/logos/xero-1.svg',
+    description: 'Modern, cloud-first accounting platform',
+  },
+  {
+    name: 'Wave',
+    fallbackIcon: 'W',
+    color: 'from-cyan-500 to-blue-500',
+    logo: '/image.png',
+    description: 'Best for freelancers and micro businesses',
+  },
+  {
+    name: 'NetSuite',
+    logo: 'https://cdn.worldvectorlogo.com/logos/netsuite-1.svg',
+    fallbackIcon: 'NS',
+    color: 'from-red-600 to-red-700',
+    description: 'Full ERP, multi-entity, enterprise finance management',
+  },
+  {
+    name: 'Zoho Books',
+    logo: 'https://cdn.worldvectorlogo.com/logos/zoho-1.svg',
+    fallbackIcon: 'ZB',
+    color: 'from-yellow-600 to-orange-600',
+    description: 'GST-ready and scalable cloud accounting',
+  },
+  {
+    name: 'UltraTax',
+    logo: '/imagecopy.png',
+    fallbackIcon: 'UT',
+    color: 'from-blue-700 to-blue-800',
+    description: 'Professional tax preparation and compliance',
+  },
+  {
+    name: 'TurboTax',
+    logo: '/image1copy.png',
+    fallbackIcon: 'TT',
+    color: 'from-red-500 to-red-600',
+    description: 'Accurate individual tax filing solution',
+  },
+  {
+    name: 'ProConnect',
+    logo: '/image5copy.png',
+    fallbackIcon: 'PC',
+    color: 'from-blue-600 to-blue-700',
+    description: 'Built for professional tax preparers & CPA firms',
+  },
+  {
+    name: 'ADP Payroll',
+    logo: '/image3copy.png',
+    fallbackIcon: 'ADP',
+    color: 'from-red-600 to-red-700',
+    description: 'Compliant and scalable payroll processing',
+  },
+  {
+    name: 'Gusto',
+    logo: '/image4opy.png',
+    fallbackIcon: 'G',
+    color: 'from-orange-500 to-red-500',
+    description: 'Simple payroll and HR management',
+  },
+  {
+    name: 'Paychex',
+    logo: 'https://cdn.worldvectorlogo.com/logos/paychex.svg',
+    fallbackIcon: 'PX',
+    color: 'from-blue-600 to-indigo-600',
+    description: 'Full-service payroll and workforce solutions',
+  },
+];
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -342,9 +356,10 @@ export default function TestimonialsAndSoftwarePage() {
                 />
               </div>
               <p className="font-semibold">{s.name}</p>
-              <p className="text-xs text-white/60">
-                Cloud-ready • Scalable • Secure
-              </p>
+            <p className="text-xs text-white/70 leading-snug">
+  {s.description}
+</p>
+
             </button>
           ))}
         </div>
@@ -377,9 +392,10 @@ export default function TestimonialsAndSoftwarePage() {
               {selectedSoftware.name}
             </h3>
 
-            <p className="text-white/70 text-center mb-6">
-              Trusted cloud accounting platform we actively work with.
-            </p>
+           <p className="text-white/70 text-center mb-6">
+  {selectedSoftware.description}
+</p>
+
 
             <button
               onClick={() => setSelectedSoftware(null)}
