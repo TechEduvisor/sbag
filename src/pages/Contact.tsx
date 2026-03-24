@@ -15,7 +15,6 @@ import {
 import HeroSection from "../components/HeroSection";
 const EnhancedContact = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredInfo, setHoveredInfo] = useState<number | null>(null);
   const [activeParticles, setActiveParticles] = useState<any[]>([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [showThankYou, setShowThankYou] = useState(false);
@@ -80,23 +79,26 @@ const EnhancedContact = () => {
     return Object.keys(newErrors).length === 0;
   };
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!validateForm()) return;
+  if (!validateForm()) return;
 
-    setShowThankYou(true);
-    setErrors({});
+  const subject = encodeURIComponent(`New Contact from ${formData.name}`);
 
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      countryCode: "+91",
-      phone: "",
-      message: "",
-    });
-  };
+  const body = encodeURIComponent(
+    `Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.countryCode} ${formData.phone}
+Company: ${formData.company}
 
+Message:
+${formData.message}`
+  );
+
+  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=sara@sbagllp.com&su=${subject}&body=${body}`;
+
+  window.open(gmailLink, "_blank");
+};
   const offices = [
     {
       city: "Delhi",
