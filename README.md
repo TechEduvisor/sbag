@@ -3,7 +3,7 @@
 
 This project is the official website for S B A G & Co. LLP, a professional firm specializing in:
 
-Bookkeeping
+Bookkeeping.
 
 Accounting
 
