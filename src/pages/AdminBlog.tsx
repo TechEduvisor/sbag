@@ -9,6 +9,7 @@ import {
   listBlogs,
   login,
   updateBlog,
+  uploadImage,
 } from "@/lib/blogApi";
 
 const empty: BlogPostInput = {
@@ -117,7 +118,34 @@ const AdminBlog = () => {
         <input className={inputCls} placeholder="Title" value={form.title} onChange={(e) => set("title", e.target.value)} required />
         <input className={inputCls} placeholder="Slug (auto from title if empty)" value={form.slug ?? ""} onChange={(e) => set("slug", e.target.value)} />
         <input className={inputCls} placeholder="Author name" value={form.authorName ?? ""} onChange={(e) => set("authorName", e.target.value)} />
-        <input className={inputCls} placeholder="Cover image URL" value={form.coverImageUrl ?? ""} onChange={(e) => set("coverImageUrl", e.target.value)} />
+        <div className="space-y-2">
+          <label className="text-sm font-medium">Blog image</label>
+          <input
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/gif"
+            disabled={busy}
+            className="block w-full text-sm"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (!file) return;
+              if (file.size > 5 * 1024 * 1024) {
+                setError("Image must be under 5 MB.");
+                return;
+              }
+              run(async () => set("coverImageUrl", await uploadImage(file)));
+              e.target.value = "";
+            }}
+          />
+          <input className={inputCls} placeholder="...or paste an image URL" value={form.coverImageUrl ?? ""} onChange={(e) => set("coverImageUrl", e.target.value)} />
+          {form.coverImageUrl && (
+            <div className="flex items-start gap-3">
+              <img src={form.coverImageUrl} alt="Preview" className="h-32 rounded-md border object-cover" />
+              <button type="button" className="text-sm underline text-red-600" onClick={() => set("coverImageUrl", "")}>
+                Remove image
+              </button>
+            </div>
+          )}
+        </div>
         <textarea className={inputCls} rows={2} placeholder="Summary" value={form.summary ?? ""} onChange={(e) => set("summary", e.target.value)} />
         <textarea className={inputCls} rows={10} placeholder="Content" value={form.content ?? ""} onChange={(e) => set("content", e.target.value)} required />
         <label className="flex items-center gap-2 text-sm">

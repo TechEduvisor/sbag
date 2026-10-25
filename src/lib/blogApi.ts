@@ -58,3 +58,20 @@ export const updateBlog = (id: number, b: BlogPostInput) =>
   request<ApiBlogPost>(`${blogsPath}/${id}`, { method: "PUT", body: JSON.stringify(b) }, true);
 export const deleteBlog = (id: number) =>
   request<void>(`${blogsPath}/${id}`, { method: "DELETE" }, true);
+
+export async function uploadImage(file: File): Promise<string> {
+  const body = new FormData();
+  body.append("file", file);
+  const res = await fetch(`${API_BASE}/api/media/upload?siteKey=${SITE_KEY}&module=blogs`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${getToken()}` },
+    body,
+  });
+  if (!res.ok) {
+    if (res.status === 401) clearToken();
+    throw new Error(
+      res.status === 401 ? "Please log in again." : `Image upload failed (${res.status})`,
+    );
+  }
+  return (await res.json()).url as string;
+}
