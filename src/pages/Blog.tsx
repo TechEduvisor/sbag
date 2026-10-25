@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { listBlogs } from "@/lib/blogApi";
 import {
   Calendar,
   Clock,
@@ -32,7 +33,7 @@ const EnhancedBlog = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [selectedBlog, setSelectedBlog] = useState(null);
 
-  const blogPosts = [
+  const staticPosts = [
     // Bookkeeping Articles (15)
     {
       id: 1,
@@ -837,8 +838,37 @@ const EnhancedBlog = () => {
     }
   ];
 
+  const [apiPosts, setApiPosts] = useState([]);
+
+  useEffect(() => {
+    listBlogs()
+      .then((posts) =>
+        setApiPosts(
+          posts
+            .filter((p) => p.isPublished)
+            .map((p) => ({
+              id: `api-${p.id}`,
+              title: p.title,
+              excerpt: p.summary ?? "",
+              fullContent: p.content ?? "",
+              icon: BookOpen,
+              category: "Latest",
+              date: p.publishedAtUtc ?? p.createdAtUtc ?? new Date().toISOString(),
+              readTime: `${Math.max(1, Math.round((p.content ?? "").split(/\s+/).length / 200))} min read`,
+              gradient: "from-blue-500 to-cyan-500",
+              bgGradient: "from-blue-500/20 to-cyan-500/20",
+              author: p.authorName ?? "",
+            })),
+        ),
+      )
+      .catch(() => {});
+  }, []);
+
+  const blogPosts = [...apiPosts, ...staticPosts];
+
   const categories = [
     "All",
+    "Latest",
     "Bookkeeping",
     "Accounting Standards",
     "Business Strategy",
