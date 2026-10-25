@@ -31,8 +31,19 @@ async function request<T>(path: string, init: RequestInit = {}, auth = false): P
   const res = await fetch(`${API_BASE}${path}`, { ...init, headers });
   if (!res.ok) {
     if (res.status === 401) clearToken();
+    let detail = "";
+    try {
+      const j = await res.clone().json();
+      detail = typeof j === "string" ? j : j?.error ?? j?.message ?? j?.title ?? "";
+    } catch {
+      /* no JSON body */
+    }
     throw new Error(
-      res.status === 401 ? "Please log in again." : `Request failed (${res.status})`,
+      res.status === 401
+        ? "Please log in again."
+        : res.status === 403
+          ? "Your account doesn't have permission to do this."
+          : detail || `Request failed (${res.status})`,
     );
   }
   const text = await res.text();
@@ -51,7 +62,8 @@ export async function login(email: string, password: string) {
 
 const blogsPath = `/api/sites/${SITE_KEY}/blogs`;
 
-export const listBlogs = () => request<ApiBlogPost[]>(blogsPath);
+// Admins must send their token, otherwise the API hides drafts.
+export const listBlogs = (auth = false) => request<ApiBlogPost[]>(blogsPath, {}, auth);
 export const createBlog = (b: BlogPostInput) =>
   request<ApiBlogPost>(blogsPath, { method: "POST", body: JSON.stringify(b) }, true);
 export const updateBlog = (id: number, b: BlogPostInput) =>
@@ -75,3 +87,51 @@ export async function uploadImage(file: File): Promise<string> {
   }
   return (await res.json()).url as string;
 }
+
+export interface ApiFaq {
+  id: number;
+  question: string;
+  answer: string;
+  category: string | null;
+  sortOrder: number;
+  isActive: boolean;
+}
+
+export type FaqInput = Omit<ApiFaq, "id">;
+
+const faqsPath = `/api/sites/${SITE_KEY}/faqs`;
+
+export const listFaqs = (auth = false) => request<ApiFaq[]>(faqsPath, {}, auth);
+export const createFaq = (f: FaqInput) =>
+  request<ApiFaq>(faqsPath, { method: "POST", body: JSON.stringify(f) }, true);
+export const updateFaq = (id: number, f: FaqInput) =>
+  request<ApiFaq>(`${faqsPath}/${id}`, { method: "PUT", body: JSON.stringify(f) }, true);
+export const deleteFaq = (id: number) =>
+  request<void>(`${faqsPath}/${id}`, { method: "DELETE" }, true);
+
+export interface ApiUser {
+  id: number;
+  fullName: string;
+  email: string;
+  role: string;
+  isActive: boolean;
+  lastLoginAtUtc?: string | null;
+}
+
+export interface NewUserInput {
+  fullName: string;
+  email: string;
+  password: string;
+  role: string;
+  isActive: boolean;
+}
+
+export const listUsers = () => request<ApiUser[]>("/api/auth/users", {}, true);
+export const createUser = (u: NewUserInput) =>
+  request<ApiUser>("/api/auth/users", { method: "POST", body: JSON.stringify(u) }, true);
+export const updateUser = (
+  id: number,
+  u: { fullName: string; role: string; isActive: boolean; password?: string },
+) => request<ApiUser>(`/api/auth/users/${id}`, { method: "PUT", body: JSON.stringify(u) }, true);
+export const deleteUser = (id: number) =>
+  request<void>(`/api/auth/users/${id}`, { method: "DELETE" }, true);
