@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useCallback, useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Toaster, toast } from "sonner";
-import { ExternalLink, Eye, EyeOff, HelpCircle, Loader2, LogOut, Newspaper, Users } from "lucide-react";
+import { ExternalLink, Eye, EyeOff, HelpCircle, LayoutDashboard, Loader2, LogOut, Newspaper, Users } from "lucide-react";
 import { clearToken, getToken, login } from "@/lib/blogApi";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,6 +17,7 @@ const Ctx = createContext<AdminContext>({ logout: () => {}, expired: () => {} })
 export const useAdmin = () => useContext(Ctx);
 
 const tabs = [
+  { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
   { to: "/admin/blog", label: "Blog posts", icon: Newspaper },
   { to: "/admin/faqs", label: "FAQs", icon: HelpCircle },
   { to: "/admin/users", label: "Users", icon: Users },
@@ -122,10 +123,11 @@ const AdminShell = ({ children }: { children: ReactNode }) => {
             </div>
 
             <nav className="mb-6 flex gap-1 border-b overflow-x-auto">
-              {tabs.map(({ to, label, icon: Icon }) => (
+              {tabs.map(({ to, label, icon: Icon, end }) => (
                 <NavLink
                   key={to}
                   to={to}
+                  end={end}
                   className={({ isActive }) =>
                     `flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 -mb-px whitespace-nowrap transition-colors ${
                       isActive

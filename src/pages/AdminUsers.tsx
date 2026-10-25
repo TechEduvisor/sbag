@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Eye, EyeOff, Loader2, Pencil, Plus, Trash2 } from "lucide-react";
 import AdminShell, { useAdmin } from "@/components/admin/AdminShell";
@@ -84,6 +85,16 @@ const UserManager = () => {
   useEffect(() => {
     load();
   }, [load]);
+
+  // Dashboard shortcut: /admin/users?new=1 opens the "Add user" form.
+  const [params, setParams] = useSearchParams();
+  useEffect(() => {
+    if (users && params.get("new")) {
+      openForm("new");
+      setParams({}, { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [users]);
 
   const openForm = (u: ApiUser | "new") => {
     setEditing(u);
