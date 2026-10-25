@@ -1,13 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
+import AdminShell, { useAdmin } from "@/components/admin/AdminShell";
 import {
-  ExternalLink,
-  Eye,
-  EyeOff,
   ImagePlus,
   Loader2,
-  LogOut,
   PenSquare,
   Plus,
   Search,
@@ -18,12 +15,10 @@ import {
 import {
   ApiBlogPost,
   BlogPostInput,
-  clearToken,
   createBlog,
   deleteBlog,
   getToken,
   listBlogs,
-  login,
   updateBlog,
   uploadImage,
 } from "@/lib/blogApi";
@@ -94,91 +89,10 @@ const fmtDate = (d?: string | null) =>
     ? new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
     : "";
 
-const AdminBlog = () => {
-  const [authed, setAuthed] = useState(!!getToken());
-
-  const handleExpired = useCallback(() => {
-    setAuthed(false);
-    toast.error("Your session expired. Please log in again.");
-  }, []);
-
-  return (
-    <>
-      <Toaster position="top-right" richColors closeButton />
-      {authed ? (
-        <Editor onLogout={() => { clearToken(); setAuthed(false); }} onExpired={handleExpired} />
-      ) : (
-        <LoginForm onDone={() => setAuthed(true)} />
-      )}
-    </>
-  );
-};
-
-const LoginForm = ({ onDone }: { onDone: () => void }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [show, setShow] = useState(false);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-
-  return (
-    <div className="min-h-screen pt-28 px-4 flex justify-center bg-background">
-      <form
-        className="w-full max-w-sm h-fit space-y-5 rounded-2xl border bg-card p-6 shadow-sm"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          setBusy(true);
-          setError("");
-          try {
-            await login(email.trim(), password);
-            onDone();
-          } catch (err) {
-            const msg = (err as Error).message;
-            setError(
-              msg.includes("401") || msg.includes("log in")
-                ? "Incorrect email or password."
-                : msg === "Failed to fetch"
-                  ? "Can't reach the server. Check your connection and try again."
-                  : msg,
-            );
-          } finally {
-            setBusy(false);
-          }
-        }}
-      >
-        <div>
-          <h1 className="text-2xl font-bold">Blog admin</h1>
-          <p className="text-sm text-muted-foreground mt-1">Log in to manage your blog posts.</p>
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} required autoFocus />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
-          <div className="relative">
-            <Input id="password" type={show ? "text" : "password"} autoComplete="current-password" value={password} onChange={(e) => setPassword(e.target.value)} required className="pr-10" />
-            <button type="button" aria-label={show ? "Hide password" : "Show password"} onClick={() => setShow((s) => !s)} className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground">
-              {show ? <EyeOff size={18} /> : <Eye size={18} />}
-            </button>
-          </div>
-        </div>
-        {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-        <Button className="w-full" disabled={busy}>
-          {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-          {busy ? "Logging in..." : "Log in"}
-        </Button>
-        <p className="text-xs text-muted-foreground">
-          The first login after a quiet period can take up to a minute while the server wakes up.
-        </p>
-      </form>
-    </div>
-  );
-};
-
 type Filter = "all" | "published" | "draft";
 
-const Editor = ({ onLogout, onExpired }: { onLogout: () => void; onExpired: () => void }) => {
+const Editor = () => {
+  const { expired: onExpired } = useAdmin();
   const [posts, setPosts] = useState<ApiBlogPost[] | null>(null);
   const [loadError, setLoadError] = useState(false);
   const [form, setForm] = useState<BlogPostInput>(empty);
@@ -212,7 +126,7 @@ const Editor = ({ onLogout, onExpired }: { onLogout: () => void; onExpired: () =
   const load = useCallback(async () => {
     try {
       setLoadError(false);
-      const list = await listBlogs();
+      const list = await listBlogs(true);
       setPosts(
         [...list].sort(
           (a, b) =>
@@ -340,23 +254,8 @@ const Editor = ({ onLogout, onExpired }: { onLogout: () => void; onExpired: () =
   const editing = posts?.find((p) => p.id === editingId);
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 bg-background">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-          <div>
-            <h1 className="text-2xl font-bold">Blog admin</h1>
-            <p className="text-sm text-muted-foreground">Write, edit and publish posts for the website.</p>
-          </div>
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm" asChild>
-              <Link to="/blog" target="_blank"><ExternalLink className="mr-2 h-4 w-4" />View blog</Link>
-            </Button>
-            <Button variant="ghost" size="sm" onClick={onLogout}>
-              <LogOut className="mr-2 h-4 w-4" />Log out
-            </Button>
-          </div>
-        </div>
-
+    <div>
+      <div>
         <div className="grid gap-6 lg:grid-cols-[340px_1fr] items-start">
           {/* Post list */}
           <aside className="rounded-2xl border bg-card p-4 space-y-3 lg:sticky lg:top-24">
@@ -581,5 +480,11 @@ const Editor = ({ onLogout, onExpired }: { onLogout: () => void; onExpired: () =
     </div>
   );
 };
+
+const AdminBlog = () => (
+  <AdminShell>
+    <Editor />
+  </AdminShell>
+);
 
 export default AdminBlog;
