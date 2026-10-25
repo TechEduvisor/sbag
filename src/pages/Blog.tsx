@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { listBlogs } from "@/lib/blogApi";
 import {
   Calendar,
@@ -42,6 +43,7 @@ const gradients = [
 ];
 
 const EnhancedBlog = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -64,6 +66,7 @@ const EnhancedBlog = () => {
               const g = gradients[i % gradients.length];
               return {
                 id: `api-${p.id}`,
+                slug: p.slug ?? String(p.id),
                 title: p.title,
                 excerpt: p.summary ?? "",
                 fullContent: p.content ?? "",
@@ -319,6 +322,7 @@ const displayedPosts = filteredPosts.slice(0, visibleCount);
                     key={post.id}
                     onMouseEnter={() => setHoveredCard(post.id)}
                     onMouseLeave={() => setHoveredCard(null)}
+                    onClick={() => navigate(`/blog/${post.slug}`)}
                     className={`group relative bg-card rounded-3xl shadow-lg overflow-hidden border border-border hover-lift cursor-pointer transition-all duration-700 ${
                       hoveredCard === post.id ? "scale-105 shadow-2xl" : ""
                     } ${
