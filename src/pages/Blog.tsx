@@ -67,6 +67,7 @@ const EnhancedBlog = () => {
               return {
                 id: `api-${p.id}`,
                 slug: p.slug ?? String(p.id),
+                cover: p.coverImageUrl,
                 title: p.title,
                 excerpt: p.summary ?? "",
                 fullContent: p.content ?? "",
@@ -345,8 +346,16 @@ const displayedPosts = filteredPosts.slice(0, visibleCount);
                     <div
                       className={`relative h-48 bg-gradient-to-br ${post.bgGradient} flex items-center justify-center overflow-hidden`}
                     >
+                      {post.cover && (
+                        <img
+                          src={post.cover}
+                          alt={post.title}
+                          loading="lazy"
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      )}
                       <div
-                        className={`transition-all duration-500 ${
+                        className={`transition-all duration-500 ${post.cover ? "hidden" : ""} ${
                           hoveredCard === post.id
                             ? "scale-125 rotate-12"
                             : "scale-100"
