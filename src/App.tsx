@@ -10,6 +10,9 @@ import Industries from "./pages/Industries";
 import Blog from "./pages/Blog";
 import AdminBlog from "./pages/AdminBlog";
 import BlogPost from "./pages/BlogPost";
+import AdminHome from "./pages/AdminHome";
+import AdminFaqs from "./pages/AdminFaqs";
+import AdminUsers from "./pages/AdminUsers";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -57,7 +60,10 @@ const App = () => (
             <Route path="/industries" element={<Industries />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/admin" element={<AdminHome />} />
             <Route path="/admin/blog" element={<AdminBlog />} />
+            <Route path="/admin/faqs" element={<AdminFaqs />} />
+            <Route path="/admin/users" element={<AdminUsers />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/contact" element={<Contact />} />
             <Route
